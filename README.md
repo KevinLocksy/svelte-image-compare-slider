@@ -1,0 +1,1 @@
+# svelte-image-compare-slider
