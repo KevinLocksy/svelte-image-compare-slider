@@ -1,9 +1,12 @@
 <script>
   import {onMount} from 'svelte';
 
-  export let height, right_src, left_src, right_alt, left_alt;
+  export let height ="250px";
+  export let right_alt="Missing right img";
+  export let left_alt="Missing left img";
+  export let right_src, left_src;
   let img, overlay, limitLeft, limitRight, slide;
-  let src; //used if only one src is defined
+  let src, alt; //used if only one src is defined
 
   onMount(()=>{
     limitLeft=img.getBoundingClientRect().left;
@@ -12,6 +15,7 @@
     overlay.style.width = (img.getBoundingClientRect().width*0.5)+"px"; //init overlay position
     if (right_src.length===0 ||left_src.length===0){
       src = right_src.length===0 ? left_src : right_src;
+      alt = right_src.length===0 ? left_alt : right_alt;
     }
   });
 
@@ -48,10 +52,9 @@
     <div bind:this={overlay} class='right_img' id='overlay'>
       <img src={right_src} alt={right_alt}/>
     </div>
-    <div bind:this={slide} class='slide' on:mousedown={move} on:touchstart={move}>
-    </div>
+    <div bind:this={slide} class='slide' on:mousedown={move} on:touchstart={move} role='slider' aria-valuenow='0' tabindex='-1'></div>
   {:else}
-    <img src={src} alt={left_alt}/>
+    <img src={src} alt={alt}/>
   {/if}
   </div>
 </div>
