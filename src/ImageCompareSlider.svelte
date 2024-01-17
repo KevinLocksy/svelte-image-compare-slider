@@ -5,8 +5,12 @@
              right_alt="Missing right img",
              left_alt="Missing left img",
              right_src=null, left_src=null;
-  let img, limitLeft, limitRight, overlay, slide;
-  let src=null, alt; //used if only one src is defined
+  //handle props
+  export let slideColor = "white",
+             slideWidth = "3px";
+
+  let limitLeft, limitRight, overlay, slide;
+  let src, alt; //used if only one src is defined
 
   onMount(()=>{
     checkUniqueSrc();
@@ -33,15 +37,15 @@
   }
 
   function init(e){
-    limitLeft=img.getBoundingClientRect().left;
-    limitRight=img.getBoundingClientRect().right;
+    limitLeft=e.target.getBoundingClientRect().left;
+    limitRight=e.target.getBoundingClientRect().right;
     const size = limitRight - limitLeft;
     slide.style.left = size*0.5+"px";    //init slide position
     overlay.style.width = size*0.5+"px"; //init overlay position
   };
   
   function move(e){
-    let slider = e.target;
+    const slider = e.target;
 
     function removeListener() {
       window.removeEventListener("mousemove",moveSlider);
@@ -69,11 +73,16 @@
 <div class='container' style='--height:{height};'>
   <div id='box'>
   {#if !src}
-    <img bind:this={img} class='left_img' src={left_src} alt={left_alt} on:load={init} />
+    <img class='left_img' src={left_src} alt={left_alt} on:load={init} />
     <div bind:this={overlay} class='right_img' id='overlay'>
       <img src={right_src} alt={right_alt}/>
     </div>
-    <div bind:this={slide} class='slide' on:mousedown={move} on:touchstart={move} role='slider' aria-valuenow='0' tabindex='-1'></div>
+    <div bind:this={slide} class='slide' on:mousedown={move} on:touchstart={move} role='slider' aria-valuenow='0' tabindex='-1' style="--slideColor:{slideColor};--slideWidth:{slideWidth}">
+      <!--<div class='handle'>
+        <div class='arrowLeft'></div>
+        <div class='arrowRight'></div>
+      </div>-->
+    </div>
   {:else}
     <img src={src} alt={alt} onerror="this.onerror=null;this.src=/error404.png"/>
   {/if}
@@ -106,10 +115,20 @@
     position:absolute;
     top:0;
     left:50%;
-    width:3px;
-    background-color:grey;
+    width:var(--slideWidth);
+    background-color:var(--slideColor);
     cursor:grab;
   }
+/*  .handle{
+    position: relative;
+    background-color:var(--slideColor);
+  }
+  .arrowLeft{
+    position: absolute;
+    border: solid 5px 0 0 5px;
+    border-color: white;
+    transform: rotate(45deg);
+  }*/
   img{
     height:100%;
   }
