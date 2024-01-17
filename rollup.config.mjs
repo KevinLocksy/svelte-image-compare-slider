@@ -1,5 +1,6 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
+import postcss from "rollup-plugin-postcss";
 import livereload from 'rollup-plugin-livereload';
 import * as child from 'child_process';
 
@@ -33,23 +34,19 @@ function serve() {
 }
 
 export default {
-  // This `main.js` file we wrote
-  input: 'test/demo.js',
+  input: 'test/demo.js',   //Entry point for rollup aka file to bundle 
   output: {
-    // The destination for our bundled JavaScript
-    file: 'public/build/bundle.js',
-    // Our bundle will be an Immediately-Invoked Function Expression
-    format: 'iife',
-    // The IIFE return value will be assigned into a variable called `app`
-    name: 'app',
+    file: 'public/build/bundle.js', // The destination for our bundled JavaScript
+    format: 'iife', // Our bundle will be an Immediately-Invoked Function Expression
+    name: 'app', // The IIFE return value will be assigned into a variable called `app`
   },
   plugins: [
     svelte({
       // Tell the svelte plugin where our svelte files are located
-      include: 'test/**/*.svelte',
+      include: ['test/**/*.svelte','src/**/*.svelte'],
     }),
-    // Tell any third-party plugins that we're building for the browser
-    resolve({ browser: true }),
+    resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
+    postcss(), // Tell the browser to use this plugin for reading css
     serve(),
     livereload('public'),
   ],
