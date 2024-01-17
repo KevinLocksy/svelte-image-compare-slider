@@ -1,24 +1,45 @@
 <script>
   import {onMount} from 'svelte';
 
-  export let height ="250px";
-  export let right_alt="Missing right img";
-  export let left_alt="Missing left img";
-  export let right_src, left_src;
-  let img, overlay, limitLeft, limitRight, slide;
-  let src, alt; //used if only one src is defined
+  export let height ="250px",
+             right_alt="Missing right img",
+             left_alt="Missing left img",
+             right_src=null, left_src=null;
+  let img, limitLeft, limitRight, overlay, slide;
+  let src=null, alt; //used if only one src is defined
 
   onMount(()=>{
-    limitLeft=img.getBoundingClientRect().left;
-    limitRight=img.getBoundingClientRect().right;
-    slide.style.left = (img.getBoundingClientRect().width*0.5)+"px";    //init slide position
-    overlay.style.width = (img.getBoundingClientRect().width*0.5)+"px"; //init overlay position
-    if (right_src.length===0 ||left_src.length===0){
-      src = right_src.length===0 ? left_src : right_src;
-      alt = right_src.length===0 ? left_alt : right_alt;
-    }
+    checkUniqueSrc();
   });
 
+  function checkUniqueSrc(){
+    try {
+      let right_img = new Image();
+      let left_img = new Image();
+      right_img.src = right_src;
+      left_img.src = left_src;
+
+      right_img.onerror= function(e){
+        this.onerror=null;
+        src = left_src;
+      };
+      left_img.onerror= function(e){
+        this.onerror=null;
+        src = right_src;
+      };
+    }catch (error){
+      this.onerror=null;
+    }
+  }
+
+  function init(e){
+    limitLeft=img.getBoundingClientRect().left;
+    limitRight=img.getBoundingClientRect().right;
+    const size = limitRight - limitLeft;
+    slide.style.left = size*0.5+"px";    //init slide position
+    overlay.style.width = size*0.5+"px"; //init overlay position
+  };
+  
   function move(e){
     let slider = e.target;
 
@@ -48,13 +69,13 @@
 <div class='container' style='--height:{height};'>
   <div id='box'>
   {#if !src}
-    <img bind:this={img} class='left_img' src={left_src} alt={left_alt}/>
+    <img bind:this={img} class='left_img' src={left_src} alt={left_alt} on:load={init} />
     <div bind:this={overlay} class='right_img' id='overlay'>
       <img src={right_src} alt={right_alt}/>
     </div>
     <div bind:this={slide} class='slide' on:mousedown={move} on:touchstart={move} role='slider' aria-valuenow='0' tabindex='-1'></div>
   {:else}
-    <img src={src} alt={alt}/>
+    <img src={src} alt={alt} onerror="this.onerror=null;this.src=/error404.png"/>
   {/if}
   </div>
 </div>
@@ -86,7 +107,7 @@
     top:0;
     left:50%;
     width:3px;
-    background-color:white;
+    background-color:grey;
     cursor:grab;
   }
   img{
