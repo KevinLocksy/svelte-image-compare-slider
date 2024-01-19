@@ -9,11 +9,12 @@
   export let slideColor = "white",
              slideWidth = "3px";
 
-  let limitLeft, limitRight, overlay, slide;
+  let img, limitLeft, limitRight, overlay, slide;
   let src, alt; //used if only one src is defined
 
   onMount(()=>{
     checkUniqueSrc();
+    init();
   });
 
   function checkUniqueSrc(){
@@ -36,9 +37,10 @@
     }
   }
 
-  function init(e){
-    limitLeft=e.target.getBoundingClientRect().left;
-    limitRight=e.target.getBoundingClientRect().right;
+  function init(){
+    if (!img) return;
+    limitLeft=img.getBoundingClientRect().left;
+    limitRight=img.getBoundingClientRect().right;
     const size = limitRight - limitLeft;
     slide.style.left = size*0.5+"px";    //init slide position
     overlay.style.width = size*0.5+"px"; //init overlay position
@@ -70,10 +72,12 @@
   }
 </script>
 
+<svelte:window on:resize={init} />
+
 <div class='container' style='--height:{height};'>
   <div id='box'>
   {#if !src}
-    <img class='left_img' src={left_src} alt={left_alt} on:load={init} />
+    <img bind:this={img} class='left_img' src={left_src} alt={left_alt} />
     <div bind:this={overlay} class='right_img' id='overlay'>
       <img src={right_src} alt={right_alt}/>
     </div>
@@ -93,6 +97,7 @@
   .container {
     position:relative;
     height:var(--height);
+    width:100%;
     max-width:100%;
     user-select:none;
   }
