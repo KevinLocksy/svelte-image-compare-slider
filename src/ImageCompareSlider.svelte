@@ -6,14 +6,14 @@
              leftAlt="Missing left img",
              rightSrc=null, leftSrc=null;
   //border's props
-  export let slideColor = "red",
+  export let slideColor = "white",
              slideWidth = "3";
   //overlay's props
   export let overlayOpacity = "1"; 
   //handle's props
-  export let handleColor = "grey",
+  export let handleColor = "white",
              handleSize = "20",
-             handleGirth = "5",
+             handleGirth = "3",
              handleOpacity = "1";
 
   let img, overlay, handle, limitLeft, limitRight;
