@@ -5,11 +5,18 @@
              right_alt="Missing right img",
              left_alt="Missing left img",
              right_src=null, left_src=null;
-  //handle props
-  export let slideColor = "white",
-             slideWidth = "3px";
+  //border's props
+  export let slideColor = "red",
+             slideWidth = "3";
+  //overlay's props
+  export let overlayOpacity = "1"; 
+  //handle's props
+  export let handleColor = "grey",
+             handleSize = "20",
+             handleGirth = "5",
+             handleOpacity = "1";
 
-  let img, limitLeft, limitRight, overlay, slide;
+  let img, overlay, handle, limitLeft, limitRight;
   let src, alt; //used if only one src is defined
 
   onMount(()=>{
@@ -42,13 +49,13 @@
     limitLeft=img.getBoundingClientRect().left;
     limitRight=img.getBoundingClientRect().right;
     const size = limitRight - limitLeft;
-    slide.style.left = size*0.5+"px";    //init slide position
+    const centerDiagonal = (handle.getBoundingClientRect().width)/2-Math.SQRT2*handleGirth; 
+    console.log(centerDiagonal)
     overlay.style.width = size*0.5+"px"; //init overlay position
+    handle.style.left = size*0.5-centerDiagonal+"px"; //init overlay position
   };
   
-  function move(e){
-    const slider = e.target;
-
+  function move(){
     function removeListener() {
       window.removeEventListener("mousemove",moveSlider);
       window.removeEventListener("mouseup",removeListener);
@@ -63,8 +70,9 @@
       } else if (x_mouse >= limitRight) {
         x_mouse = limitRight;
       }
+      const centerDiagonal = (handle.getBoundingClientRect().width)/2-Math.SQRT2*handleGirth;
       const x_shift = x_mouse - limitLeft;
-      slider.style.left = x_shift+"px";
+      handle.style.left=x_shift-centerDiagonal+"px";
       overlay.style.width = x_shift+"px";
     }
     window.addEventListener("mousemove",moveSlider);
@@ -77,24 +85,19 @@
 <div class='container' style='--height:{height};'>
   <div id='box'>
   {#if !src}
-    <img bind:this={img} class='left_img' src={left_src} alt={left_alt} on:load={init}/>
-    <div bind:this={overlay} class='right_img' id='overlay'>
+    <img bind:this={img} src={left_src} alt={left_alt} on:load={init}/>
+    <div bind:this={overlay} class='overlay' style="--slideColor:{slideColor};--slideWidth:{slideWidth}; --overlayOpacity:{overlayOpacity}">
       <img src={right_src} alt={right_alt}/>
     </div>
-    <div bind:this={slide} class='slide' on:mousedown={move} on:touchstart={move} role='slider' aria-valuenow='0' tabindex='-1' style="--slideColor:{slideColor};--slideWidth:{slideWidth}">
-      <!--<div class='handle'>
-        <div class='arrowLeft'></div>
-        <div class='arrowRight'></div>
-      </div>-->
-    </div>
+    <div bind:this={handle} class='handle' on:mousedown={move} on:touchstart={move} style="--handleColor:{handleColor};--handleSize:{handleSize};--handleGirth:{handleGirth};--handleOpacity:{handleOpacity}" role='slider' aria-valuenow='0' tabindex='-1'></div>
   {:else}
     <img src={src} alt={alt} onerror="this.onerror=null;this.src=/error404.png"/>
   {/if}
   </div>
 </div>
 
-<style>
-  .container {
+<style> 
+  .container{
     position:relative;
     height:var(--height);
     width:100%;
@@ -102,39 +105,38 @@
     user-select:none;
   }
   #box{
+    display: flex;
     position:absolute;
     height:100%;
-    width:100%;
+    align-items: center;
   }
-  #box > * {
-    height:100%;
-  }
-  .left_img{
-    position:absolute;
-  }
-  .right_img{
+  .overlay{
     position:absolute;
     overflow:hidden;
+    height:100%;
+    border-right: solid;
+    border-right-width:calc(var(--slideWidth)* 1px);
+    border-right-color:var(--slideColor);
+    opacity: var(--overlayOpacity);
   }
-  .slide{
-    position:absolute;
-    top:0;
-    left:50%;
-    width:var(--slideWidth);
-    background-color:var(--slideColor);
+  .handle{
+    position: absolute;
+    height:calc(var(--handleSize)*1px);
+    width: calc(var(--handleSize)*1px);
+    border: solid;
+    border-width:calc(var(--handleGirth)*1px);
+    border-radius: 3px;
+    border-color:var(--handleColor);
+    transform: rotate(-45deg);
+    mask:radial-gradient(circle 10px at top right, #0000 100%,var(--handleColor)) top right,
+          radial-gradient(circle 10px at bottom left, #0000 98%, var(--handleColor)) bottom left;
+    mask-size: 50%;
+    mask-repeat: no-repeat;
+    opacity: var(--handleOpacity);
     cursor:grab;
   }
-/*  .handle{
-    position: relative;
-    background-color:var(--slideColor);
-  }
-  .arrowLeft{
-    position: absolute;
-    border: solid 5px 0 0 5px;
-    border-color: white;
-    transform: rotate(45deg);
-  }*/
   img{
+    position:absolute;
     height:100%;
   }
 </style>
