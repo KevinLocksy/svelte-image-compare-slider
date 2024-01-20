@@ -2,9 +2,9 @@
   import {onMount} from 'svelte';
 
   export let height ="250px",
-             right_alt="Missing right img",
-             left_alt="Missing left img",
-             right_src=null, left_src=null;
+             rightAlt="Missing right img",
+             leftAlt="Missing left img",
+             rightSrc=null, leftSrc=null;
   //border's props
   export let slideColor = "red",
              slideWidth = "3";
@@ -82,12 +82,12 @@
 
 <svelte:window on:resize={init} />
 
-<div class='container' style='--height:{height};'>
-  <div id='box'>
+<div class='component' style='--height:{height};'>
+  <div class='container'>
   {#if !src}
-    <img bind:this={img} src={left_src} alt={left_alt} on:load={init}/>
+    <img bind:this={img} src={rightSrc} alt={rightAlt} on:load={init}/>
     <div bind:this={overlay} class='overlay' style="--slideColor:{slideColor};--slideWidth:{slideWidth}; --overlayOpacity:{overlayOpacity}">
-      <img src={right_src} alt={right_alt}/>
+      <img src={leftSrc} alt={leftAlt}/>
     </div>
     <div bind:this={handle} class='handle' on:mousedown={move} on:touchstart={move} style="--handleColor:{handleColor};--handleSize:{handleSize};--handleGirth:{handleGirth};--handleOpacity:{handleOpacity}" role='slider' aria-valuenow='0' tabindex='-1'></div>
   {:else}
@@ -97,14 +97,14 @@
 </div>
 
 <style> 
-  .container{
+  .component{
     position:relative;
     height:var(--height);
     width:100%;
     max-width:100%;
     user-select:none;
   }
-  #box{
+  .container{
     display: flex;
     position:absolute;
     height:100%;
