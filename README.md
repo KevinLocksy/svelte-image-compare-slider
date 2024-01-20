@@ -12,18 +12,18 @@ Svelte component to compare two images with a slider.
 #### API - props
 | Name            | Type    | Explanation                                        | Required                 | Default          | Example        |
 |-----------------|---------|----------------------------------------------------|--------------------------|------------------|----------------|
-| `height`        | `string`| Component's height (thus the images) with its unit | :x:                      |  250px           | 50px / 10em    |
+| `height`        | `string`| Component's height (thus the images) with its unit | :white_check_mark:       |  250px           | 50px / 10em    |
 | `leftSrc`       | `string`| Path of the image on the left. Can be empty        | :white_check_mark: / :x: | /                | /img/left.jpg  |
-| `leftAlt`       | `string`| Alt of the image on the left                       | :x:                      | Missing left img | left           |
+| `leftAlt`       | `string`| Alt of the image on the left                       | :white_check_mark:       | Missing left img | left           |
 | `rightSrc`      | `string`| Path of the image on the right. Can be empty       | :white_check_mark: / :x: | /                | /img/right.jpg |
-| `rightAlt`      | `string`| Alt of the image on the right                      | :x:                      | Missing right img| right          |
+| `rightAlt`      | `string`| Alt of the image on the right                      | :white_check_mark:       | Missing right img| right          |
 | `slideColor`    | `string`| Slide's color                                      |                          |                  | white          |
 | `slideWidth`    | `int`   | Slide's width in px                                |                          | 3                | 5              |
-| `overlayOpacity`| `int`   | Overlaid image's opacity. 0 <= opacity <= 1        |                          | 1                | 0.5            |
+| `overlayOpacity`| `int`   | Overlaid image's opacity. 0$\leqslant$opacity$\leqslant$1|                    | 1                | 0.5            |
 | `handleColor`   | `string`| Handle's color                                     |                          |                  | white          |
 | `handleSize`    | `int`   | Handle's size in px                                |                          | 20               | 10             |
 | `handleGirth`   | `int`   | Handle's girth in px                               |                          | 5                | 5              |
-| `handleOpacity` | `int`   | Handle's opacity. 0 <= opacity <= 1                |                          | 1                | 0.8            |
+| `handleOpacity` | `int`   | Handle's opacity. 0$\leqslant$opacity$\leqslant$1  |                          | 1                | 0.8            |
 
 #### Code Snippet
 ```html
@@ -125,12 +125,12 @@ public/index.html
 
 #### Environment
 
-| Name                        | Explanation                                                                | Required       | 
-|-----------------------------|----------------------------------------------------------------------------|----------------|
-|`rollup`                     | Bundler                                                                    | :x:            |
-|`@rollup/plugin-node-resolve`| Used to help rollup resolve third-party plugins                            | :x:            |
-|`rollup-plugin-svelte`       | Third-party plugin for rollup to understand how to process Svelte component| :x:            |
-|`rollup-plugin-postcss`      | Third-party plugin for rollup to understand how to process CSS             | if code has CSS|
+| Name                        | Explanation                                                                | Required          | 
+|-----------------------------|----------------------------------------------------------------------------|-------------------|
+|`rollup`                     | Bundler                                                                    | :white_check_mark:|
+|`@rollup/plugin-node-resolve`| Used to help rollup resolve third-party plugins                            | :white_check_mark:|
+|`rollup-plugin-svelte`       | Third-party plugin for rollup to understand how to process Svelte component| :white_check_mark:|
+|`rollup-plugin-postcss`      | Third-party plugin for rollup to understand how to process CSS             | if code has CSS   |
 
 if necessary, in `rollup.config.mjs`, add : import * as child from 'child_process';
 if necessary, add in package.json `type:'module'` and the extension .mjs for the file `rollup.config.js`
