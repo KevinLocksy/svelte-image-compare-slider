@@ -77,7 +77,7 @@
 <div class='container' style='--height:{height};'>
   <div id='box'>
   {#if !src}
-    <img bind:this={img} class='left_img' src={left_src} alt={left_alt} />
+    <img bind:this={img} class='left_img' src={left_src} alt={left_alt} on:load={init}/>
     <div bind:this={overlay} class='right_img' id='overlay'>
       <img src={right_src} alt={right_alt}/>
     </div>
