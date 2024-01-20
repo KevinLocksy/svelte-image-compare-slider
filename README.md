@@ -4,16 +4,26 @@ Svelte component to compare two images with a slider.
 ## Features
 - Simple to use
 - Displays a tag `img` if one of the defined sources is empty.
+- Possibility to define the opacity of the overlaid image (the left one)
+- Possibility to define the handle's characterics: size, girth, color, opacity
+- Possibility to define the slider's characterics: width, color
 
 ## Usage
 #### API - props
-| Name        | Type     | Explanation                                        | Required                 | Default | Example        |
-|-------------|----------|----------------------------------------------------|--------------------------|---------|----------------|
-| `height`    | `string` | Component's height (thus the images) with its unit | :x:                      |  250px  | 50px / 10em    |
-| `left_src`  | `string` | Path of the image on the left. Can be empty.       | :white_check_mark: / :x: |         | /img/left.jpg  |
-| `left_alt`  | `string` | Alt of the image on the left                       | :x:                      |         | left           |
-| `right_src` | `string` | Path of the image on the right. Can be empty       | :white_check_mark: / :x: |         | /img/right.jpg |
-| `right_alt` | `string` | Alt of the image on the right                      | :x:                      |         | right          |
+| Name            | Type    | Explanation                                        | Required                 | Default          | Example        |
+|-----------------|---------|----------------------------------------------------|--------------------------|------------------|----------------|
+| `height`        | `string`| Component's height (thus the images) with its unit | :x:                      |  250px           | 50px / 10em    |
+| `leftSrc`       | `string`| Path of the image on the left. Can be empty        | :white_check_mark: / :x: | /                | /img/left.jpg  |
+| `leftAlt`       | `string`| Alt of the image on the left                       | :x:                      | Missing left img | left           |
+| `rightSrc`      | `string`| Path of the image on the right. Can be empty       | :white_check_mark: / :x: | /                | /img/right.jpg |
+| `rightAlt`      | `string`| Alt of the image on the right                      | :x:                      | Missing right img| right          |
+| `slideColor`    | `string`| Slide's color                                      |                          |                  | white          |
+| `slideWidth`    | `int`   | Slide's width in px                                |                          | 3                | 5              |
+| `overlayOpacity`| `int`   | Overlaid image's opacity. 0 <= opacity <= 1        |                          | 1                | 0.5            |
+| `handleColor`   | `string`| Handle's color                                     |                          |                  | white          |
+| `handleSize`    | `int`   | Handle's size in px                                |                          | 20               | 10             |
+| `handleGirth`   | `int`   | Handle's girth in px                               |                          | 5                | 5              |
+| `handleOpacity` | `int`   | Handle's opacity. 0 <= opacity <= 1                |                          | 1                | 0.8            |
 
 #### Code Snippet
 ```html
@@ -22,35 +32,35 @@ import ImageCompareSlider from 'path/to/svelte-image-compare-slider.svelte' // w
 
 <script>
   const height = "250px"; //does not work with %
-  const imgLeft_src = ""; 
-  const imgLeft_alt = "left"; 
-  const imgRight_src = "";
-  const imgRight_alt = "right";
+  const imgLeft_src = "path_left_img"; 
+  const imgLeft_alt = "Left img missing"; 
+  const imgRight_src = "path_right_img";
+  const imgRight_alt = "Right img missing";
 </script> 
 
 <!-- displays the image comparison -->
 <ImageCompareSlider height={height}
-                    left_src={imgLeft_src}
-                    left_alt={imgLeft_alt}
-                    right_src={imgRight_src}
-                    right_alt={imgRight_alt} />
+                    leftSrc={imgLeft_src}
+                    leftAlt={imgLeft_alt}
+                    rightSrc={imgRight_src}
+                    rightAlt={imgRight_alt} />
 
-<!-- displays the single image defined -->
+<!-- displays a single image -->
 <ImageCompareSlider height={height}
-                    left_src=""
-                    left_alt={imgLeft_alt}
-                    right_src={imgRight_src}
-                    right_alt={imgRight_alt} />
+                    leftSrc=""
+                    leftAlt={imgLeft_alt}
+                    rightSrc={imgRight_src}
+                    rightAlt={imgRight_alt} />
 
 <ImageCompareSlider height={height}
-                    left_src={imgLeft_src}
-                    left_alt={imgLeft_alt}
-                    right_src=""
-                    right_alt={imgRight_alt} />
+                    leftSrc={imgLeft_src}
+                    leftAlt={imgLeft_alt}
+                    rightSrc=""
+                    rightAlt={imgRight_alt} />
 ```
+//put img
 
 ## Demo
-
 #### App
 
 - Install the necessary dependencies for creating the app: https://typeofnan.dev/how-to-set-up-a-svelte-app-with-rollup/
@@ -87,10 +97,10 @@ Demo.svelte
 <div id="container">
   <h1>Image Slider comparison</h1>
   <ImageCompareSlider height={height}
-                    left_src={imgLeft_src}
-                    left_alt={imgLeft_alt}
-                    right_src={imgRight_src}
-                    right_alt={imgRight_alt} />
+                    leftSrc={imgLeft_src}
+                    leftAlt={imgLeft_alt}
+                    rightSrc={imgRight_src}
+                    rightAlt={imgRight_alt} />
 </div>
 ```
 
@@ -110,42 +120,47 @@ public/index.html
 </html>
 ```
 
+> [!NOTE]
+> Reminder: displays a `img` if one of the sources is empty
+
 #### Environment
 
-| Name     | | Explanation                                        | Required                 | Default | Example        |
-|----------|-|----------------------------------------------------|--------------------------|---------|----------------|
-| `rollup` | | Component's height (thus the images) with its unit | :x:                      |         | 50px / 10em    |
-| `@rollup/plugin-node-resolve` | | Used to help rollup resolve third-party plugins | :x:                      |         | 50px / 10em    |
-| `rollup-plugin-svelte` | | Third-party plugin that helps rollup understand how to process Svelte apps | :x:                      |         | 50px / 10em    |
-| `rollup-plugin-postcss` | | Third-party plugin that helps rollup understand how to CSS apps | :x:                      |         | 50px / 10em    |
-| `rollup` | | Component's height (thus the images) with its unit | /                      |         | 50px / 10em    |
+| Name                        | Explanation                                                                | Required       | 
+|-----------------------------|----------------------------------------------------------------------------|----------------|
+|`rollup`                     | Bundler                                                                    | :x:            |
+|`@rollup/plugin-node-resolve`| Used to help rollup resolve third-party plugins                            | :x:            |
+|`rollup-plugin-svelte`       | Third-party plugin for rollup to understand how to process Svelte component| :x:            |
+|`rollup-plugin-postcss`      | Third-party plugin for rollup to understand how to process CSS             | if code has CSS|
 
 if necessary, in `rollup.config.mjs`, add : import * as child from 'child_process';
 if necessary, add in package.json `type:'module'` and the extension .mjs for the file `rollup.config.js`
 
-//put img
-
-> [!NOTE]
-> Reminder: displays a `img` if one of the sources is empty
-
-####
-
-## Todo
+## Roadmap
 - Priority
-  - [ ] fix slider use when change window's dimensions : due to onmount?
-  - [ ] pkg component
-  - [ ] clean the limits of the box
-  - [ ] check necessity of onMount
-  - [ ] check necessity of the various tags' positions
-  - [ ] check necessity of the various bindings
-  - [ ] rename tags' classes
-  - [ ] make it responsive if it is a flex element 
-  - [ ] add default values for props
+  - [ ] fix issue when the container containing the compo has style attribute `text-align:center;`
+  ```html
+    <div style="text-align: center;">
+  <ImageCompareSlider height={height}
+                    leftSrc={imgLeft_src}
+                    leftAlt={imgLeft_alt}
+                    rightSrc={imgRight_src}
+                    rightAlt={imgRight_alt} />
+  </div>
+  ```
   - [ ] add demo
+  - [ ] Upload component to npm
+  - [ ] make it responsive if it is a flex element 
+  - [x] ~fix slider use when change window's dimensions : due to onmount? Yes~
+  - [x] ~clean the limits of the box~
+  - [x] ~check necessity of onMount~
+  - [x] ~check necessity of the various tags' positions~
+  - [x] ~check necessity of the various bindings~
+  - [x] ~rename tags' classes~
+  - [x] ~add default values for props~
 
 - Features
-  - [ ] add a handle
   - [ ] add crop images
-  - [ ] add prop to change slider characteristics
+  - [x] ~add a handle~
+  - [x] ~add prop to change slider characteristics~
 
 © [KevinLocksy](https://github.com/KevinLocksy)
