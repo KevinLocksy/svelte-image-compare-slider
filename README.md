@@ -19,11 +19,11 @@ Svelte component to compare two images with a slider.
 | `rightAlt`      | `string`| Alt of the image on the right                      | :white_check_mark:       | Missing right img| right          |
 | `slideColor`    | `string`| Slide's color                                      |                          |                  | white          |
 | `slideWidth`    | `int`   | Slide's width in px                                |                          | 3                | 5              |
-| `overlayOpacity`| `int`   | Overlaid image's opacity. 0$\leqslant$opacity$\leqslant$1|                    | 1                | 0.5            |
+| `overlayOpacity`| `int`   | Overlaid image's opacity. 0&le;opacity&le;1        |                          | 1                | 0.5            |
 | `handleColor`   | `string`| Handle's color                                     |                          |                  | white          |
 | `handleSize`    | `int`   | Handle's size in px                                |                          | 20               | 10             |
 | `handleGirth`   | `int`   | Handle's girth in px                               |                          | 5                | 5              |
-| `handleOpacity` | `int`   | Handle's opacity. 0$\leqslant$opacity$\leqslant$1  |                          | 1                | 0.8            |
+| `handleOpacity` | `int`   | Handle's opacity. 0&le;opacity&le;1                |                          | 1                | 0.8            |
 
 #### Code Snippet
 ```html
