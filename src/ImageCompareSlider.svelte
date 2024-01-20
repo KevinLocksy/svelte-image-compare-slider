@@ -20,27 +20,32 @@
   let src, alt; //used if only one src is defined
 
   onMount(()=>{
-    checkUniqueSrc();
+    checkUniqueSrc(leftSrc,rightSrc);
     init();
   });
 
-  function checkUniqueSrc(){
+  function checkUniqueSrc(leftSrc,rightSrc){
+    if(!leftSrc||!rightSrc){
+      src= leftSrc ? leftSrc : rightSrc;
+      return;
+    }
+
     try {
       let right_img = new Image();
       let left_img = new Image();
-      right_img.src = right_src;
-      left_img.src = left_src;
+      right_img.src = rightSrc;
+      left_img.src = leftSrc;
 
       right_img.onerror= function(e){
-        this.onerror=null;
-        src = left_src;
+        //this.onerror=null;
+        src = leftSrc;
       };
       left_img.onerror= function(e){
-        this.onerror=null;
-        src = right_src;
+        //this.onerror=null;
+        src = rightSrc;
       };
     }catch (error){
-      this.onerror=null;
+      //this.onerror=null;
     }
   }
 
@@ -50,7 +55,6 @@
     limitRight=img.getBoundingClientRect().right;
     const size = limitRight - limitLeft;
     const centerDiagonal = (handle.getBoundingClientRect().width)/2-Math.SQRT2*handleGirth; 
-    console.log(centerDiagonal)
     overlay.style.width = size*0.5+"px"; //init overlay position
     handle.style.left = size*0.5-centerDiagonal+"px"; //init overlay position
   };
