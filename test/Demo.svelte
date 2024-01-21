@@ -40,6 +40,22 @@ import ImageCompareSlider from '../src/ImageCompareSlider.svelte'
         <li>Handle's girth: 3</li>
         <li>Handle's opacity: 1</li>
       </ul>
+      <div class="snippet">
+        <pre>
+          <code class="language-html">
+  &lt;script&gt;
+    import ImageCompareSlider from '../src/ImageCompareSlider.svelte'
+  &lt;/script&gt;
+  &lt;div&gt;
+    &lt;ImageCompareSlider height="{height}"
+                        leftSrc="{imgLeft_src}"
+                        leftAlt="{imgLeft_alt}"
+                        rightSrc="{imgRight_src}"
+                        rightAlt="{imgRight_alt}" /&gt;
+  &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
     </div>
     <div id="custom">
       <ImageCompareSlider height={height}
@@ -54,18 +70,94 @@ import ImageCompareSlider from '../src/ImageCompareSlider.svelte'
                         handleGirth={handleGirth}
                         handleOpacity={handleOpacity}
                          />
+      <h3>Custom slider</h3>
       <div class="characteristics">
-        <label>Slide's width<input type="range" name="slideWidth" min="0" max="100" bind:value={slideWidth}></label>
-        <div role="slider" aria-valuemin="0" aria-valuemax="360" aria-valuenow={slideColor} tabindex="0">Slide's color
-          <div name="slideColor"></div>
-        </div>
-        <label>Overlay's opacity<input type="range" name="overlayOpacity" min="0" max="1" step="0.01" bind:value={overlayOpacity}></label>
-        <div role="slider" aria-valuemin="0" aria-valuemax="360" aria-valuenow={handleColor} tabindex="0">Handle's color
-          <div name="handleColor"></div>
-        </div>
-        <label>Handle's size<input type="range" name="handleSize" min="0" max="100" bind:value={handleSize}></label>
-        <label>Handle's girth<input type="range" name="handleGirth" min="0" max="100" bind:value={handleGirth}></label>
-        <label>Handle's opacity<input type="range" name="handleOpacity" min="0" max="1" step="0.01" bind:value={handleOpacity}></label>
+        <ul type="o">
+          <li>
+            Slide's width<input type="range" name="slideWidth" min="0" max="100" bind:value={slideWidth}>
+          </li>
+          <li>
+            <div role="slider" aria-valuemin="0" aria-valuemax="360" aria-valuenow={slideColor} tabindex="0">Slide's color
+              <div name="slideColor"></div>
+            </div>
+          </li>
+          <li>
+            <label>Overlay's opacity<input type="range" name="overlayOpacity" min="0" max="1" step="0.01" bind:value={overlayOpacity}></label>
+          </li>
+          <li>
+            <div role="slider" aria-valuemin="0" aria-valuemax="360" aria-valuenow={handleColor} tabindex="0">Handle's color
+              <div name="handleColor"></div>
+            </div>
+          </li>
+          <li>
+            <label>Handle's size<input type="range" name="handleSize" min="0" max="100" bind:value={handleSize}></label>
+          </li>
+          <li>
+            <label>Handle's girth<input type="range" name="handleGirth" min="0" max="100" bind:value={handleGirth}></label>
+          </li>
+          <li>
+            <label>Handle's opacity<input type="range" name="handleOpacity" min="0" max="1" step="0.01" bind:value={handleOpacity}></label>
+          </li>
+        </ul>
+      </div>
+      <div class="snippet">
+        <pre>
+          <code class="language-html">
+  &lt;script&gt;
+    import ImageCompareSlider from '../src/ImageCompareSlider.svelte'
+  //border's props
+    let slideColor="white", slideWidth={slideWidth};
+    //overlay's props
+    let overlayOpacity={overlayOpacity};
+    //handle's props
+    let handleColor="white",handleSize={handleSize},handleGirth={handleGirth},handleOpacity={handleOpacity};
+  &lt;/script&gt;
+  &lt;div&gt;
+    &lt;ImageCompareSlider height="{height}"
+                        leftSrc="{imgLeft_src}"
+                        leftAlt="{imgLeft_alt}"
+                        rightSrc="{imgRight_src}"
+                        rightAlt="{imgRight_alt}"
+                        slideWidth="&lcub;slideWidth&rcub;"
+                        slideColor="&lcub;slideColor&rcub;"
+                        overlayOpacity="&lcub;overlayOpacity&rcub;"
+                        handleSize="&lcub;handleSize&rcub;"
+                        handleGirth="&lcub;handleGirth&rcub;"
+                        handleOpacity="&lcub;handleOpacity&rcub;"/&gt;
+  &lt;/div&gt;
+          </code>
+        </pre>
+      </div>
+    </div>
+    <div id="singleImg">
+      <ImageCompareSlider height={height}
+                        leftSrc=""
+                        leftAlt={imgLeft_alt}
+                        rightSrc={imgRight_src}
+                        rightAlt={imgRight_alt} />
+      <h3>Single image</h3>
+      <div>
+        <ul type="o">
+          <li>
+            Left image's source: ""
+          </li>
+        </ul>
+      </div>
+      <div class="snippet">
+        <pre>
+          <code class="language-html">
+  &lt;script&gt;
+    import ImageCompareSlider from '../src/ImageCompareSlider.svelte'
+  &lt;/script&gt;
+  &lt;div&gt;
+    &lt;ImageCompareSlider height="{height}"
+                        leftSrc=""
+                        leftAlt="{imgLeft_alt}"
+                        rightSrc="{imgRight_src}"
+                        rightAlt="{imgRight_alt}" /&gt;
+  &lt;/div&gt;
+          </code>
+        </pre>
       </div>
     </div>
   </div>
@@ -89,7 +181,7 @@ import ImageCompareSlider from '../src/ImageCompareSlider.svelte'
   }
   #demo{
     display:grid;
-    grid-template-columns:4fr 1fr 4fr 1fr;
+    grid-template-columns:4fr 4fr 4fr;
     position: relative;
   }
   #custom{
@@ -109,5 +201,11 @@ import ImageCompareSlider from '../src/ImageCompareSlider.svelte'
     text-align:center;
     vertical-align: middle;
     bottom: 0%;
+  }
+  .snippet{
+    display:flex;
+    height: min-content;
+    width: fit-content;
+    background-color: lightgrey;
   }
 </style>
