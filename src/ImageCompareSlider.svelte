@@ -117,9 +117,11 @@
   .overlay{
     position:absolute;
     overflow:hidden;
+    box-sizing: border-box;
+    box-shadow: calc(var(--slideWidth)/2* 1px) 0px 0px var(--slideColor);
     height:100%;
     border-right: solid;
-    border-right-width:calc(var(--slideWidth)* 1px);
+    border-right-width:calc(var(--slideWidth)/2* 1px);
     border-right-color:var(--slideColor);
     opacity: var(--overlayOpacity);
   }
