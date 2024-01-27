@@ -60,6 +60,10 @@
   };
   
   function move(){
+    if (!img) return;
+    limitLeft=img.getBoundingClientRect().left;
+    limitRight=img.getBoundingClientRect().right;
+
     function removeListener() {
       window.removeEventListener("touchmove",moveSlider);
       window.removeEventListener("mousemove",moveSlider);
