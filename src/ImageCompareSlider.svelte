@@ -61,25 +61,27 @@
   
   function move(){
     function removeListener() {
+      window.removeEventListener("touchmove",moveSlider);
       window.removeEventListener("mousemove",moveSlider);
-      window.removeEventListener("mouseup",removeListener);
       window.removeEventListener("touchend",removeListener);
+      window.removeEventListener("mouseup",removeListener);
     }
 
-    function moveSlider(mouse){
-      let x_mouse = mouse.pageX;
-
-      if (x_mouse <= limitLeft){
-        x_mouse = limitLeft;
-      } else if (x_mouse >= limitRight) {
-        x_mouse = limitRight;
+    function moveSlider(e){
+      let x = e.type==="touchmove" ? e.touches[0].clientX: e.clientX;
+      if (x <= limitLeft){
+        x = limitLeft;
+      } else if (x >= limitRight) {
+        x = limitRight;
       }
       const centerDiagonal = (handle.getBoundingClientRect().width)/2-Math.SQRT2*handleGirth;
-      const x_shift = x_mouse - limitLeft;
+      const x_shift = x - limitLeft;
       handle.style.left=x_shift-centerDiagonal+"px";
       overlay.style.width = x_shift+"px";
     }
+    window.addEventListener("touchmove",moveSlider);
     window.addEventListener("mousemove",moveSlider);
+    window.addEventListener("touchend",removeListener);
     window.addEventListener("mouseup",removeListener);
   }
 </script>
@@ -107,6 +109,7 @@
     width:100%;
     max-width:100%;
     user-select:none;
+    touch-action: none;
   }
   .container{
     display: flex;
