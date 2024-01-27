@@ -68,7 +68,7 @@
     }
 
     function moveSlider(e){
-      let x = e.type==="touchmove" ? e.touches[0].clientX: e.clientX;
+      let x = (e.type==="touchmove" ? e.touches[0] : e).pageX;
       if (x <= limitLeft){
         x = limitLeft;
       } else if (x >= limitRight) {
