@@ -100,7 +100,7 @@
     <div bind:this={overlay} class='overlay' style="--slideColor:{slideColor};--slideWidth:{slideWidth}; --overlayOpacity:{overlayOpacity}">
       <img class='foreground-img' src={frontSrc} alt={frontAlt}/>
     </div>
-    <!-- to have the handle in front of the images to compare-->
+    <!--to have the handle in front of the images to compare-->
     <div bind:this={handle} class='handle' on:mousedown={move} on:touchstart={move} style="--handleColor:{handleColor};--handleSize:{handleSize};--handleGirth:{handleGirth};--handleOpacity:{handleOpacity}" role='slider' aria-valuenow='0' tabindex='-1'></div>
   {:else}
     <img class='unique-img' src={src} alt={alt} onerror="this.onerror=null;this.src=/error404.png"/>
@@ -112,7 +112,7 @@
     position:relative;
     height:var(--height);
     width:fit-content;
-    user-select:none;
+    user-select:none;/* avoid img selection (blue overlay)*/
     touch-action: none;
   }
   img{
