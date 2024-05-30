@@ -99,7 +99,6 @@
     <img class='background-img' bind:this={img} src={backSrc} alt={backAlt} on:load={setHandlePosition}/>
     <div bind:this={overlay} class='overlay' style="--slideColor:{slideColor};--slideWidth:{slideWidth}; --overlayOpacity:{overlayOpacity}">
       <img class='foreground-img' src={frontSrc} alt={frontAlt}/>
-      <span>test</span>
     </div>
     <!-- to have the handle in front of the images to compare-->
     <div bind:this={handle} class='handle' on:mousedown={move} on:touchstart={move} style="--handleColor:{handleColor};--handleSize:{handleSize};--handleGirth:{handleGirth};--handleOpacity:{handleOpacity}" role='slider' aria-valuenow='0' tabindex='-1'></div>
