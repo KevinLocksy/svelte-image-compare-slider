@@ -41,7 +41,7 @@
       </tr>
     </thead>
     <tbody>
-      {#each tableContent as {id,element, feature, value}}
+      {#each tableContent as {id, element, feature, value}}
         <tr>
           <td>{element}</td>
           <td>{feature}</td>
@@ -60,9 +60,9 @@
       &lt;div&gt;
         &lt;ImageCompareSlider 
           height="{height}"
-          backSrc="{imgBack_src}"
+          backSrc="path_BackgroundImg"
           backAlt="{imgBack_alt}"
-          frontSrc=""
+          frontSrc="{imgFront_src}"
           frontAlt="{imgFront_alt}" 
         /&gt;
       &lt;/div&gt;
