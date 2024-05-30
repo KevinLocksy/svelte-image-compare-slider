@@ -1,68 +1,86 @@
 <script>
-  import {onMount} from 'svelte';
-
   export let height ="250px",
-             rightAlt="Missing right img",
-             leftAlt="Missing left img",
-             rightSrc=null, leftSrc=null;
-  //border's props
+             frontAlt="Missing foreground img",
+             backAlt="Missing background img",
+             frontSrc=null, 
+             backSrc=null;
   export let slideColor = "white",
              slideWidth = "3";
-  //overlay's props
   export let overlayOpacity = "1"; 
-  //handle's props
   export let handleColor = "white",
              handleSize = "20",
              handleGirth = "3",
              handleOpacity = "1";
 
-  let img, overlay, handle, limitLeft, limitRight;
+  let img, overlay, handle, limitBack, limitfront;
   let src, alt; //used if only one src is defined
 
-  onMount(()=>{
-    checkUniqueSrc(leftSrc,rightSrc);
-    init();
-  });
-
-  function checkUniqueSrc(leftSrc,rightSrc){
-    if(!leftSrc||!rightSrc){
-      src= leftSrc ? leftSrc : rightSrc;
+  function init(){
+    checkUniqueSrc(backSrc,frontSrc);
+  }
+  
+  function checkUniqueSrc(backSrc,frontSrc){
+    if(!backSrc||!frontSrc){
+      src= backSrc ? backSrc : frontSrc;
       return;
     }
 
     try {
-      let right_img = new Image();
+      let front_img = new Image();
       let left_img = new Image();
-      right_img.src = rightSrc;
-      left_img.src = leftSrc;
+      front_img.src = frontSrc;
+      left_img.src = backSrc;
 
-      right_img.onerror= function(e){
+      front_img.onerror= function(e){
         //this.onerror=null;
-        src = leftSrc;
+        src = backSrc;
       };
       left_img.onerror= function(e){
         //this.onerror=null;
-        src = rightSrc;
+        src = frontSrc;
       };
     }catch (error){
       //this.onerror=null;
     }
   }
 
-  function init(){
+  function setHandlePosition(){
     if (!img) return;
-    limitLeft=img.getBoundingClientRect().left;
-    limitRight=img.getBoundingClientRect().right;
-    const size = limitRight - limitLeft;
+    limitBack=img.getBoundingClientRect().left;
+    limitfront=img.getBoundingClientRect().right;
+    const size = limitfront - limitBack;
     const centerDiagonal = (handle.getBoundingClientRect().width)/2-Math.SQRT2*handleGirth; 
     overlay.style.width = size*0.5+"px"; //init overlay position
     handle.style.left = size*0.5-centerDiagonal+"px"; //init overlay position
+    handle.style.top = "50%"; //init overlay position
   };
   
   function move(){
     if (!img) return;
-    limitLeft=img.getBoundingClientRect().left;
-    limitRight=img.getBoundingClientRect().right;
+    limitBack=img.getBoundingClientRect().left;
+    limitfront=img.getBoundingClientRect().right;
+
+    window.addEventListener("touchmove",moveSlider);
+    window.addEventListener("mousemove",moveSlider);
+
+    function moveSlider(e){
+      let x = (e.type==="touchmove" ? e.touches[0] : e).pageX;
+      if (x <= limitBack){
+        x = limitBack;
+      } else if (x >= limitfront) {
+        x = limitfront;
+      }
+      const centerDiagonal = (handle.getBoundingClientRect().width)/2-Math.SQRT2*handleGirth;
+      const x_shift = x - limitBack;
+      handle.style.left=x_shift-centerDiagonal+"px";
+      overlay.style.width = x_shift+"px";
+    }
+
+    /**
+     * Remove listeners
+    */
+    window.addEventListener("touchend",removeListener);
+    window.addEventListener("mouseup",removeListener);
 
     function removeListener() {
       window.removeEventListener("touchmove",moveSlider);
@@ -71,55 +89,41 @@
       window.removeEventListener("mouseup",removeListener);
     }
 
-    function moveSlider(e){
-      let x = (e.type==="touchmove" ? e.touches[0] : e).pageX;
-      if (x <= limitLeft){
-        x = limitLeft;
-      } else if (x >= limitRight) {
-        x = limitRight;
-      }
-      const centerDiagonal = (handle.getBoundingClientRect().width)/2-Math.SQRT2*handleGirth;
-      const x_shift = x - limitLeft;
-      handle.style.left=x_shift-centerDiagonal+"px";
-      overlay.style.width = x_shift+"px";
-    }
-    window.addEventListener("touchmove",moveSlider);
-    window.addEventListener("mousemove",moveSlider);
-    window.addEventListener("touchend",removeListener);
-    window.addEventListener("mouseup",removeListener);
-  }
+  }//end move()
 </script>
 
-<svelte:window on:resize={init} />
+<svelte:window on:resize={setHandlePosition} />
 
-<div class='component' style='--height:{height};'>
-  <div class='container'>
-  {#if !src}
-    <img bind:this={img} src={rightSrc} alt={rightAlt} on:load={init}/>
-    <div bind:this={overlay} class='overlay' style="--slideColor:{slideColor};--slideWidth:{slideWidth}; --overlayOpacity:{overlayOpacity}">
-      <img src={leftSrc} alt={leftAlt}/>
-    </div>
-    <div bind:this={handle} class='handle' on:mousedown={move} on:touchstart={move} style="--handleColor:{handleColor};--handleSize:{handleSize};--handleGirth:{handleGirth};--handleOpacity:{handleOpacity}" role='slider' aria-valuenow='0' tabindex='-1'></div>
-  {:else}
-    <img src={src} alt={alt} onerror="this.onerror=null;this.src=/error404.png"/>
-  {/if}
-  </div>
+<div name='image-compare-slider' class='component' use:init style='--height:{height};'>
+    {#if !src}
+      <img class='background-img' bind:this={img} src={backSrc} alt={backAlt} on:load={setHandlePosition}/>
+      <div bind:this={overlay} class='overlay' style="--slideColor:{slideColor};--slideWidth:{slideWidth}; --overlayOpacity:{overlayOpacity}">
+        <img class='foreground-img' src={frontSrc} alt={frontAlt}/>
+        <span>test</span>
+      </div>
+      <!-- to have the handle in front of the images to compare-->
+      <div bind:this={handle} class='handle' on:mousedown={move} on:touchstart={move} style="--handleColor:{handleColor};--handleSize:{handleSize};--handleGirth:{handleGirth};--handleOpacity:{handleOpacity}" role='slider' aria-valuenow='0' tabindex='-1'></div>
+    {:else}
+      <img class='unique-img' src={src} alt={alt} onerror="this.onerror=null;this.src=/error404.png"/>
+    {/if}
 </div>
 
 <style> 
-  .component{
+  .component[name=image-compare-slider]{
     position:relative;
     height:var(--height);
-    width:100%;
-    max-width:100%;
+    width:fit-content;
     user-select:none;
     touch-action: none;
   }
-  .container{
-    display: flex;
-    position:absolute;
+  img{
     height:100%;
-    align-items: center;
+  }
+  img.foreground-img{
+    position:relative;
+  }
+  img.background-img{
+    position:absolute;
   }
   .overlay{
     position:absolute;
@@ -148,8 +152,5 @@
     opacity: var(--handleOpacity);
     cursor:grab;
   }
-  img{
-    position:absolute;
-    height:100%;
-  }
+
 </style>

@@ -1,2 +1,5 @@
 *.iml
 .idea/
+static/
+public/build/
+node_modules/
