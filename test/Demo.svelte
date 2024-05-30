@@ -11,8 +11,6 @@
   const imgFront_src = "https://www.w3schools.com/howto/img_snow.jpg";
   const imgFront_alt = "right";
   const height = "250px"; //does not work with %
-
-
 </script>
 
 <div id='demo-image-compare-slider'>
