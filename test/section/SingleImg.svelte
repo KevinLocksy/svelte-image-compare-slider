@@ -7,13 +7,13 @@
              imgBack_src=null;
 
   const tableContent = [
-    {"id":0,"element":"Slide","feature":"width","value":3},
-    {"id":1,"element":"","feature":"color","value":"white"},
-    {"id":2,"element":"Overlay","feature":"opacity","value":1},
-    {"id":3,"element":"Handle","feature":"color","value":"white"},
-    {"id":4,"element":"","feature":"size","value":20},
-    {"id":5,"element":"","feature":"girth","value":3},
-    {"id":6,"element":"","feature":"opacity","value":1}
+    {"id":0,"element":"Slide","feature":"width","value":"/"},
+    {"id":1,"element":"","feature":"color","value":"/"},
+    {"id":2,"element":"Overlay","feature":"opacity","value":"/"},
+    {"id":3,"element":"Handle","feature":"color","value":"/"},
+    {"id":4,"element":"","feature":"size","value":"/"},
+    {"id":5,"element":"","feature":"girth","value":"/"},
+    {"id":6,"element":"","feature":"opacity","value":"/"}
   ]
 </script>
 
@@ -31,7 +31,7 @@
   </div>
   <p>With <code>frontSrc="";</code> </p>
 
-  <h3>Custom slider</h3>
+  <h3>Custom characterics</h3>
   <table>
     <thead>
       <tr>

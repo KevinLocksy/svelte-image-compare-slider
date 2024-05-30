@@ -20,6 +20,9 @@
   <header>
     <h1>Image Comparison Slider</h1>
   </header>
+  <div id='standfirst'>
+    <p>All the photographies and sketches have been made by Kevin Locksy. <br/> Please do not download or copy its work without his permission.</p>
+  </div>
   <main>
     <div id="demo-default">
       <Default imgBack_src='{imgBack_src}' imgFront_src='{imgFront_src}'/>
@@ -32,7 +35,7 @@
     </div>
   </main>
   <footer>
-    Developed by Kevin Locksy
+    Developed by Kevin Locksy. <br/>All the photographies and sketches have been taken or made by Kevin Locksy. Please do not download or copy its work without his permission.
   </footer>
 </div>
 
@@ -64,6 +67,9 @@
   header{
     top:0;
     background-color: var(--background-color-header);
+  }
+  #standfirst{
+    margin: 1em;
   }
   main{
     min-height: calc(100vh - 2*var(--banner-min-height));

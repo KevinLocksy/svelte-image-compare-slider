@@ -28,7 +28,7 @@
     frontAlt={imgFront_alt} />
   </div>
 
-  <h3>Default values</h3>
+  <h3>Default characterics</h3>
   <table>
     <thead>
       <tr>

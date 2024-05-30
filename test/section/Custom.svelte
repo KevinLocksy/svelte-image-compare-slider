@@ -42,7 +42,7 @@
     />
   </div>
 
-  <h3>Custom slider</h3>
+  <h3>Custom characterics</h3>
   <table>
     <thead>
       <tr>
