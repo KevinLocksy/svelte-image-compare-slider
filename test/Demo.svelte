@@ -6,9 +6,12 @@
   import Default from './section/Default.svelte';
   import Custom from './section/Custom.svelte';
   import SingleImg from './section/SingleImg.svelte';
-  const imgBack_src = "https://www.w3schools.com/howto/img_forest.jpg";
+  import logo from "../static/locksy-darkmode.logo.jpg";
+  import imgBack from "../static/pic-r169.jpg";
+  import imgFront from "../static/draw-r169.jpg";
+  const imgBack_src = imgBack;
   const imgBack_alt = "left";
-  const imgFront_src = "https://www.w3schools.com/howto/img_snow.jpg";
+  const imgFront_src = imgFront;
   const imgFront_alt = "right";
   const height = "250px"; //does not work with %
 </script>
@@ -25,7 +28,7 @@
       <Custom imgBack_src='{imgBack_src}' imgFront_src='{imgFront_src}'/>
     </div>
     <div id="demo-single-img">
-      <SingleImg imgBack_src='{imgBack_src}' imgFront_src='{imgFront_src}'/>
+      <SingleImg imgBack_src='{imgBack_src}' imgFront_src=''/>
     </div>
   </main>
   <footer>

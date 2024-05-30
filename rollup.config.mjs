@@ -2,6 +2,7 @@ import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import postcss from "rollup-plugin-postcss";
 import postcssImport from 'postcss-import';
+import image from '@rollup/plugin-image';
 import livereload from 'rollup-plugin-livereload';
 import * as child from 'child_process';
 
@@ -50,6 +51,7 @@ export default {
     postcss({
       plugins: [postcssImport()]
   }), // Tell the browser to use this plugin for reading css
+    image(),//To bundle images => careful about img sizes : Images are encoded using base64, which means they will be 33% larger than the size on disk.
     serve(),
     livereload('public'),
   ],
