@@ -67,17 +67,21 @@ import ImageCompareSlider from 'path/to/svelte-image-compare-slider.svelte' // w
   - npm i -D rollup-plugin-svelte > import svelte from 'rollup-plugin-svelte'; 
   - npm i -D @rollup/plugin-node-resolve > import resolve from '@rollup/plugin-node-resolve';
   - npm i -D rollup-plugin-postcss > import postcss from "rollup-plugin-postcss";
-  - npm install -D postcss-import > import postcssImport from 'postcss-import'; and add in rollup.config.mjs to be able to add @import in css files/style tag
-  `plugins: [resolve(),
+  - npm i -D postcss-import > import postcssImport from 'postcss-import'; and to be able to add @import in css files/style tags add in rollup.config.mjs the following
+  `plugins: [
         postcss({
             plugins: [postcssImport()]
         })]`
+  - npm i -D @rollup/plugin-image < import image from '@rollup/plugin-image'; and add in rollup.config.mjs the following
+  `plugins: [image()]`
 - Create your demo application: demo.js / Demo.svelte
 - Define the location of the Demo App to bundle for rollup in `rollup.config.mjs > export default {input:'...........'}`
 - Define the entry point for the browser in the `public` folder
 - Run your application: `(npm run dev) -and (npm run start)`
 - Open in a browser `http://localhost:3000/`
   - The port can be defined in `rollup.config.mjs`, method `serve()`
+
+Note: Images are encoded using base64, which means they will be 33% larger than the size on disk. //https://www.npmjs.com/package/@rollup/plugin-image
 
 ```js
 demo.js
