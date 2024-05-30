@@ -31,7 +31,7 @@
   </div>
   <p>With <code>frontSrc="";</code> </p>
 
-  <h3>Custom characterics</h3>
+  <h3>Characterics</h3>
   <table>
     <thead>
       <tr>
