@@ -1,6 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import postcss from "rollup-plugin-postcss";
+import postcssImport from 'postcss-import';
 import livereload from 'rollup-plugin-livereload';
 import * as child from 'child_process';
 
@@ -46,7 +47,9 @@ export default {
       include: ['test/**/*.svelte','src/**/*.svelte'],
     }),
     resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
-    postcss(), // Tell the browser to use this plugin for reading css
+    postcss({
+      plugins: [postcssImport()]
+  }), // Tell the browser to use this plugin for reading css
     serve(),
     livereload('public'),
   ],

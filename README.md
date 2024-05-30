@@ -67,10 +67,17 @@ import ImageCompareSlider from 'path/to/svelte-image-compare-slider.svelte' // w
   - npm i -D rollup-plugin-svelte > import svelte from 'rollup-plugin-svelte'; 
   - npm i -D @rollup/plugin-node-resolve > import resolve from '@rollup/plugin-node-resolve';
   - npm i -D rollup-plugin-postcss > import postcss from "rollup-plugin-postcss";
+  - npm install -D postcss-import > import postcssImport from 'postcss-import'; and add in rollup.config.mjs to be able to add @import in css files/style tag
+  `plugins: [resolve(),
+        postcss({
+            plugins: [postcssImport()]
+        })]`
 - Create your demo application: demo.js / Demo.svelte
 - Define the location of the Demo App to bundle for rollup in `rollup.config.mjs > export default {input:'...........'}`
 - Define the entry point for the browser in the `public` folder
 - Run your application: `(npm run dev) -and (npm run start)`
+- Open in a browser `http://localhost:3000/`
+  - The port can be defined in `rollup.config.mjs`, method `serve()`
 
 ```js
 demo.js
@@ -123,6 +130,9 @@ public/index.html
 > [!NOTE]
 > Reminder: displays a `img` if one of the sources is empty
 
+to center the component:
+display: flex / grid + position + top ...
+
 #### Environment
 
 | Name                        | Explanation                                                                | Required          | 
@@ -137,7 +147,7 @@ if necessary, add in package.json `type:'module'` and the extension .mjs for the
 
 ## Roadmap
 - Priority
-  - [ ] fix issue when the container containing the compo has style attribute `text-align:center;`
+  - [x] fix issue when the container containing the compo has style attribute `text-align:center;`
   ```html
     <div style="text-align: center;">
   <ImageCompareSlider height={height}
