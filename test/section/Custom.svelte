@@ -112,60 +112,12 @@
 </div>
 
 <style>
+  @import url(style.css);
+
   div[name=slideColor]{
     height:8px;
     width: 200px;
     background: linear-gradient(to right,hsl(0,100%,50%),hsl(60,100%,50%),hsl(120,100%,50%),hsl(180,100%,50%),hsl(240,100%,50%),hsl(300,100%,50%),hsl(360,100%,50%));
     border-radius: 20px;
-  }
-
-  .demo{
-    --table-header-background-color:#a6a6a6;
-    --table-row-odd-background-color:#c1c1c1;
-    --table-row-even-background-color:#dddddd;
-  }
-  /**
-  * Component position
-  */
-  .container{
-    position: relative;
-    width: fit-content;
-
-    left: 12.5%;
-  }
-  /**
-  * Table
-  */
-  table{
-    margin: 1em auto;
-  }
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    min-width: 120px;
-  }
-  th {
-    background-color: var(--table-header-background-color);
-  }
-  tr{
-    background-color: var(--table-row-odd-background-color);
-    &:nth-child(even) {
-      background-color: var(--table-row-even-background-color);
-    }
-  }
-  /**
-  * Snippet code
-  */
-  .snippet{
-    display:flex;
-    justify-content: center;
-    height: min-content;
-    width: 100%;
-  }
-  code{
-    background-color: lightgrey;
-    border: solid 1px grey;
-
   }
 </style>
