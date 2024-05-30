@@ -112,7 +112,7 @@
 </div>
 
 <style>
-  @import url(style.css);
+  @import url(styles.css);
 
   div[name=slideColor]{
     height:8px;

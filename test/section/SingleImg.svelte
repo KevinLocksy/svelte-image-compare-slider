@@ -71,5 +71,5 @@
 </div>
 
 <style>
-  @import url(style.css);
+  @import url(styles.css);
 </style>
