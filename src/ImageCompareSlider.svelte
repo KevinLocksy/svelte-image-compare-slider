@@ -18,7 +18,7 @@
   function init(){
     checkUniqueSrc(backSrc,frontSrc);
   }
-  
+
   function checkUniqueSrc(backSrc,frontSrc){
     if(!backSrc||!frontSrc){
       src= backSrc ? backSrc : frontSrc;
@@ -26,16 +26,14 @@
     }
 
     try {
-      let front_img = new Image();
-      let left_img = new Image();
       front_img.src = frontSrc;
-      left_img.src = backSrc;
-
+      back_img.src = backSrc;
+      
       front_img.onerror= function(e){
         //this.onerror=null;
         src = backSrc;
       };
-      left_img.onerror= function(e){
+      back_img.onerror= function(e){
         //this.onerror=null;
         src = frontSrc;
       };
@@ -116,20 +114,20 @@
     touch-action: none;
   }
   img{
-    height:100%;
-  }
-  img.foreground-img{
-    position:relative;
+    height:var(--height);
+    max-height: 100%;
   }
   img.background-img{
-    position:absolute;
+    position:relative;
   }
   .overlay{
     position:absolute;
+    top:0;
+    left:0;
+    height:inherit;
     overflow:hidden;
     box-sizing: border-box;
     box-shadow: calc(var(--slideWidth)/2* 1px) 0px 0px var(--slideColor);
-    height:100%;
     border-right: solid;
     border-right-width:calc(var(--slideWidth)/2* 1px);
     border-right-color:var(--slideColor);
