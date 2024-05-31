@@ -1,5 +1,6 @@
 <svelte:head>
   <title>Demonstration Component Image Compare Slider</title>
+  <link rel="icon" href="favicon-rounded.logo.png" />
 </svelte:head>
 
 <script>
