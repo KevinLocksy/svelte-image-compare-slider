@@ -7,12 +7,9 @@
   import Default from './section/Default.svelte';
   import Custom from './section/Custom.svelte';
   import SingleImg from './section/SingleImg.svelte';
-  import logo from "../static/locksy-darkmode.logo.jpg";
-  import imgBack from "../static/pic-r169.jpg";
-  import imgFront from "../static/draw-r169.jpg";
-  const imgBack_src = imgBack;
+  const imgBack_src = "pic-r169.jpg";
   const imgBack_alt = "left";
-  const imgFront_src = imgFront;
+  const imgFront_src = "draw-r169.jpg";
   const imgFront_alt = "right";
   const height = "250px"; //does not work with %
 </script>

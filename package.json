@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "postcss-import": "^16.1.0",
     "rollup": "^4.9.4",

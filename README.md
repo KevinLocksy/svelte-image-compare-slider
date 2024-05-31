@@ -72,8 +72,6 @@ import ImageCompareSlider from 'path/to/svelte-image-compare-slider.svelte' // w
         postcss({
             plugins: [postcssImport()]
         })]`
-  - npm i -D @rollup/plugin-image < import image from '@rollup/plugin-image'; and add in rollup.config.mjs the following
-  `plugins: [image()]`
 - Create your demo application: demo.js / Demo.svelte
 - Define the location of the Demo App to bundle for rollup in `rollup.config.mjs > export default {input:'...........'}`
 - Define the entry point for the browser in the `public` folder
@@ -81,7 +79,7 @@ import ImageCompareSlider from 'path/to/svelte-image-compare-slider.svelte' // w
 - Open in a browser `http://localhost:3000/`
   - The port can be defined in `rollup.config.mjs`, method `serve()`
 
-Note: Images are encoded using base64, which means they will be 33% larger than the size on disk. //https://www.npmjs.com/package/@rollup/plugin-image
+Note: To add images, place them in the public folder.
 
 ```js
 demo.js
@@ -151,6 +149,12 @@ if necessary, add in package.json `type:'module'` and the extension .mjs for the
 
 ## Roadmap
 - Priority
+  - [x] component position is wrong : center from the left side of the component not its 'middle' 
+  - [ ] fix handle
+  - [ ] color slider 
+  - [ ] change layout colouring
+  - [ ] add media size
+  - [ ] codepen
   - [x] fix issue when the container containing the compo has style attribute `text-align:center;`
   ```html
     <div style="text-align: center;">
@@ -161,9 +165,9 @@ if necessary, add in package.json `type:'module'` and the extension .mjs for the
                     rightAlt={imgRight_alt} />
   </div>
   ```
-  - [ ] add demo
+  - [x] add demo
   - [ ] Upload component to npm
-  - [ ] make it responsive if it is a flex element 
+  - [ ] make it responsive if it is a flex element ?
   - [x] ~fix slider use when change window's dimensions : due to onmount? Yes~
   - [x] ~clean the limits of the box~
   - [x] ~check necessity of onMount~
