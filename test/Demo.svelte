@@ -46,6 +46,7 @@
     --background-color-header:rgb(57, 57, 57);
     --background-color-footer:rgb(57, 57, 57);
     --background-color-column-odd:rgb(100, 100, 100);
+    --shadow-box-primary:#191b1f;
   }
   /**
   * global features 
@@ -57,6 +58,7 @@
     position: -webkit-sticky;
     align-content: center;
     text-align: center;
+    box-shadow: 0px 1px 5px var(--shadow-box-primary);
     z-index: 9999;
   }
   /**
