@@ -19,7 +19,7 @@
     <h1>Image Comparison Slider</h1>
   </header>
   <div id='standfirst'>
-    <p>All the photographies and sketches have been made by Kevin Locksy. Please do not download or copy its work without his permission.</p>
+    <p>All the photographies and sketches have been made by Kevin Locksy. Please do not download or copy his work without his permission.</p>
   </div>
   <main>
     <div id="demo-default">
@@ -33,7 +33,7 @@
     </div>
   </main>
   <footer>
-    Developed by Kevin Locksy. <br/>All the photographies and sketches have been taken or made by Kevin Locksy. Please do not download or copy its work without his permission.
+    Developed by Kevin Locksy. <br/>All the photographies and sketches have been taken or made by Kevin Locksy. Please do not download or copy his work without his permission.
   </footer>
 </div>
 
@@ -71,8 +71,8 @@
   }
   main{
     min-height: calc(100vh - 2*var(--banner-min-height));
-    padding: 1em;
     display:flex;
+    flex-wrap:wrap;
     &>*{
       flex:1;
       padding: 0 1.5em;
