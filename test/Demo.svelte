@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Demonstration Component Image Compare Slider</title>
+  <title>Demonstration Svelte Component Image Compare Slider</title>
   <link rel="icon" href="favicon-rounded.logo.png" />
 </svelte:head>
 
@@ -33,7 +33,10 @@
     </div>
   </main>
   <footer>
-    Developed by Kevin Locksy. <br/>All the photographies and sketches have been taken or made by Kevin Locksy. Please do not download or copy his work without his permission.
+    <p>
+      Developed by Kevin Locksy.
+    </p> 
+    <p>All the photographies and sketches have been taken or made by Kevin Locksy. Please do not download or copy his work without his permission.</p>
   </footer>
 </div>
 
@@ -75,9 +78,12 @@
     min-height: calc(100vh - 2*var(--banner-min-height));
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
     &>*{
       flex:1;
       padding: 0 1.5em;
+      max-width: 500px;/** this order matters max-width/min-width*/
+      min-width: fit-content;
     }
     &>*:nth-child(odd){
       background-color: var(--background-color-column-odd);
