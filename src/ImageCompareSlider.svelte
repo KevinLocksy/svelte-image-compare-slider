@@ -108,14 +108,13 @@
 <style> 
   .component[name=image-compare-slider]{
     position:relative;
-    height:var(--height);
+    max-height:var(--height);
     width:fit-content;
     user-select:none;/* avoid img selection (blue overlay)*/
     touch-action: none;
   }
   img{
-    height:var(--height);
-    max-height: 100%;
+    max-height:var(--height);
   }
   img.background-img{
     position:relative;
