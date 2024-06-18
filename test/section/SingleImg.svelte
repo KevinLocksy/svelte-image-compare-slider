@@ -17,7 +17,7 @@
   ]
 </script>
 
-<div id="singleImg-component" class='demo'>
+<div id="singleImg-component">
 
   <h3>Single image</h3>
   <div class="container">
@@ -71,5 +71,4 @@
 </div>
 
 <style>
-  @import url(styles.css);
 </style>

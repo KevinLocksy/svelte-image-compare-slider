@@ -22,13 +22,13 @@
     <p>All the photographies and sketches have been made by Kevin Locksy. Please do not download or copy his work without his permission.</p>
   </div>
   <main>
-    <div id="demo-default">
+    <div id="demo-default" class='demo'>
       <Default imgBack_src='{imgBack_src}' imgFront_src='{imgFront_src}'/>
     </div>
-    <div id="demo-custom">
+    <div id="demo-custom" class='demo'>
       <Custom imgBack_src='{imgBack_src}' imgFront_src='{imgFront_src}'/>
     </div>
-    <div id="demo-single-img">
+    <div id="demo-single-img" class='demo'>
       <SingleImg imgBack_src='{imgBack_src}' imgFront_src=''/>
     </div>
   </main>
@@ -41,6 +41,7 @@
 </div>
 
 <style>
+  @import url(section/styles.css);
   /**
   * Css var
   */

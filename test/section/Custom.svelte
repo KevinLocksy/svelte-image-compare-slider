@@ -23,7 +23,7 @@
   ]
 </script>
 
-<div id="custom-component" class='demo'>
+<div id="custom-component">
 
   <h2>Custom demo</h2>
   <div class="container">
@@ -112,8 +112,6 @@
 </div>
 
 <style>
-  @import url(styles.css);
-
   div[name=slideColor]{
     height:8px;
     width: 200px;

@@ -17,8 +17,7 @@
   ]
 </script>
 
-<div id='default-component' class='demo'>
-
+<div id='default-component'>
   <h2>Default demo</h2>
   <div class="container">
     <ImageCompareSlider height={height}
@@ -69,5 +68,4 @@
 </div>
 
 <style>
-  @import url(styles.css);
 </style>
