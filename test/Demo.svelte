@@ -45,7 +45,6 @@
   * Css var
   */
   #demo-image-compare-slider{
-    --banner-min-height:5vh;
     --background-color-header:rgb(57, 57, 57);
     --background-color-footer:rgb(57, 57, 57);
     --background-color-column-odd:rgb(100, 100, 100);
@@ -55,12 +54,11 @@
   * global features 
   */
   header,footer{
-    min-height: var(--banner-min-height);
-    min-width: 100%;
     position: sticky;
     position: -webkit-sticky;
     align-content: center;
     text-align: center;
+    padding:1em;
     box-shadow: 0px 1px 5px var(--shadow-box-primary);
     z-index: 9999;
   }
@@ -70,20 +68,22 @@
   header{
     top:0;
     background-color: var(--background-color-header);
+    min-height: 5vh;
   }
   #standfirst{
     text-align: center;
+    padding: 1em;
   }
   main{
     min-height: calc(100vh - 2*var(--banner-min-height));
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
+    padding: 0 1em;
     &>*{
       flex:1;
       padding: 0 1.5em;
-      max-width: 500px;/** this order matters max-width/min-width*/
-      min-width: fit-content;
+
     }
     &>*:nth-child(odd){
       background-color: var(--background-color-column-odd);
@@ -93,7 +93,9 @@
   footer{
     bottom: 0;
     background-color: var(--background-color-footer);
-    padding: 0.5em 0;
+    min-height: 5vh;
+    max-height: 10em;
+    padding: 0.25em 1em;
   }
   /**
   * Demo Sections

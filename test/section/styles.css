@@ -17,10 +17,10 @@ table{
   margin: 1em auto;
 }
 td, th {
-  border: 1px solid #dddddd;
+  width: clamp(0em,15vw,10em);
+  padding: 0.5em 1em;
   text-align: left;
-  padding: 8px;
-  min-width: 120px;
+  border: 1px solid #dddddd;
 }
 th {
   background-color: var(--table-header-background-color);
