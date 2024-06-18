@@ -44,4 +44,5 @@ code{
   background-color: lightgrey;
   padding: 0 2em;
   border: solid 1px grey;
+  white-space:pre-wrap;
 }
