@@ -115,6 +115,7 @@
   }
   img{
     max-height:var(--height);
+    max-width:80vw;
   }
   img.background-img{
     position:relative;
