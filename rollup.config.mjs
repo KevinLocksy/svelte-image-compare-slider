@@ -36,44 +36,34 @@ function serve() {
   };
 }
 
-export default [
-  {
-    input: 'test/demo.js',   //Entry point for rollup aka file to bundle 
-    output: {
-      file: 'public/build/bundle.js', // The destination for our bundled JavaScript
-      format: 'iife', // Our bundle will be an Immediately-Invoked Function Expression
-      name: 'app', // The IIFE return value will be assigned into a variable called `app`
-    },
-    plugins: [
-      svelte({
-        // Tell the svelte plugin where our svelte files are located
-        include: ['test/**/*.svelte','src/**/*.svelte'],
-      }),
-      html({
-        include: "test/**/*.html",
-      }),
-      copy({
-        targets: [
-          { src: 'test/public/**/*.png', dest: 'public/build' },
-          { src: 'test/public/**/*.jpg', dest: 'public/build' },
-        ]
-      }),
-      resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
-      postcss({
-        plugins: [postcssImport()]
-    }), // Tell the browser to use this plugin for reading css
-      serve(),
-      livereload('public'),
-    ],
+export default {
+  input: 'test/demo.js',   //Entry point for rollup aka file to bundle 
+  output: {
+    file: 'public/build/bundle.js', // The destination for our bundled JavaScript
+    format: 'iife', // Our bundle will be an Immediately-Invoked Function Expression
+    name: 'app', // The IIFE return value will be assigned into a variable called `app`
   },
-  {
-    input: 'test/index.html',   //Entry point for rollup aka file to bundle 
-    output: {
-      file: 'public/build/index.html', // The destination for our bundled JavaScript
-      format: 'iife', // Our bundle will be an Immediately-Invoked Function Expression
-      name: 'app', // The IIFE return value will be assigned into a variable called `app`
-    },
-  }
-];
+  plugins: [
+    svelte({
+      // Tell the svelte plugin where our svelte files are located
+      include: ['test/**/*.svelte','src/**/*.svelte'],
+    }),
+    html({
+      include: "test/**/*.html",
+    }),
+    copy({
+      targets: [
+        { src: 'test/public/**/*.png', dest: 'public/build' },
+        { src: 'test/public/**/*.jpg', dest: 'public/build' },
+      ]
+    }),
+    resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
+    postcss({
+      plugins: [postcssImport()]
+  }), // Tell the browser to use this plugin for reading css
+    serve(),
+    livereload('public'),
+  ],
+};
 
 //https://typeofnan.dev/how-to-set-up-a-svelte-app-with-rollup/
