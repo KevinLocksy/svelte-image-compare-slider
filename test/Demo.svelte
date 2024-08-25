@@ -19,7 +19,7 @@
     <h1>Image Comparison Slider</h1>
   </header>
   <div id='standfirst'>
-    <p>©KevinLocksy. All rights reserved. Images, videos, writings, and all other creative content are protected and may not be used without expressed permission from the artist</p>
+    <p>Demonstration of a Svelte component to compare two images with a slider. Easy to use and possibility to custom it</p>
   </div>
   <main>
     <div id="demo-default" class='demo'>
@@ -80,8 +80,9 @@
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
+    gap:1em;
     &>*{
-      flex:1;
+      margin: 1em 0;
     }
     &>*:nth-child(odd){
       background-color: var(--background-color-column-odd);

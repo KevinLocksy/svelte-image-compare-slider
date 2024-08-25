@@ -3,6 +3,9 @@
   --table-row-odd-background-color:#c1c1c1;
   --table-row-even-background-color:#dddddd;
 }
+html{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 body{
   margin:0;
   color: white;
@@ -24,6 +27,8 @@ h2,h3{
 table{
   margin: 1em auto;
   color:black;
+  min-width:25vw;
+  width:min-content;
 }
 td, th {
   width: clamp(0em,15vw,10em);
@@ -44,13 +49,14 @@ tr{
 * Snippet code
 */
 .snippet{
-  color:black;
   display:flex;
   justify-content: center;
   height: min-content;
   width: 100%;
 }
 code{
+  color:black;
+  width:clamp(20vw, 70%, 70vw);
   background-color: lightgrey;
   padding: 0 2em;
   border: solid 1px grey;

@@ -19,7 +19,7 @@
 
 <div id="singleImg-component">
 
-  <h3>Single image</h3>
+  <h2>Single image</h2>
   <div class="container">
     <ImageCompareSlider 
       height={height}
@@ -29,7 +29,6 @@
       frontAlt={imgFront_alt} 
     />
   </div>
-  <p>With <code>frontSrc="";</code> </p>
 
   <h3>Characterics</h3>
   <table>
@@ -52,6 +51,7 @@
   </table>
 
   <h3>Snippet code</h3>
+  <p>With <code>frontSrc="";</code> </p>
   <pre class="snippet">
     <code class="language-html">
       &lt;script&gt;
