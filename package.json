@@ -15,6 +15,7 @@
   "description": "Svelte component to compare two images with a slider.",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://kevinlocksy.github.io/svelte-image-compare-slider/",
   "type": "module",
   "directories": {
     "test": "test"
