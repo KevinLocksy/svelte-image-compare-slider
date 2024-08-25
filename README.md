@@ -66,6 +66,15 @@ import ImageCompareSlider from 'path/to/svelte-image-compare-slider.svelte' // w
 - Install the necessary dependencies for creating the app: https://typeofnan.dev/how-to-set-up-a-svelte-app-with-rollup/
   - npm i -D rollup-plugin-svelte > import svelte from 'rollup-plugin-svelte'; 
   - npm i -D @rollup/plugin-node-resolve > import resolve from '@rollup/plugin-node-resolve';
+  - npm i -D @rollup/plugin-html > import html from '@rollup/plugin-node-html';
+  - npm i -D rollup-plugin-copy > import copy from 'rollup-plugin-copy';
+  add to the plugins
+      copy({
+        targets: [
+          { src: 'test/public/**/*.png', dest: 'public/build/' },
+          { src: 'test/public/**/*.jpg', dest: 'public/build/' },
+        ]
+      }),
   - npm i -D rollup-plugin-postcss > import postcss from "rollup-plugin-postcss";
   - npm i -D postcss-import > import postcssImport from 'postcss-import'; and to be able to add @import in css files/style tags add in rollup.config.mjs the following
   `plugins: [
@@ -78,6 +87,10 @@ import ImageCompareSlider from 'path/to/svelte-image-compare-slider.svelte' // w
 - Run your application: `(npm run dev) -and (npm run start)`
 - Open in a browser `http://localhost:3000/`
   - The port can be defined in `rollup.config.mjs`, method `serve()`
+- create an index page, public/index.html
+- add in package.json : "homepage": "https://kevinlocksy.github.io/svelte-image-compare-slider/",
+- deploy: npm install -D gh-pages
+- run to deploy the page into git-pages: npx gh-pages -d build -t true
 
 Note: To add images, place them in the public folder.
 
