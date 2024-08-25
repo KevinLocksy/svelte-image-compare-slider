@@ -1,6 +1,7 @@
 import svelte from 'rollup-plugin-svelte';
 import html from '@rollup/plugin-html';
 import resolve from '@rollup/plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 import postcss from "rollup-plugin-postcss";
 import postcssImport from 'postcss-import';
 import livereload from 'rollup-plugin-livereload';
@@ -50,6 +51,12 @@ export default [
       }),
       html({
         include: "test/**/*.html",
+      }),
+      copy({
+        targets: [
+          { src: 'test/public/**/*.png', dest: 'public/build' },
+          { src: 'test/public/**/*.jpg', dest: 'public/build' },
+        ]
       }),
       resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
       postcss({
