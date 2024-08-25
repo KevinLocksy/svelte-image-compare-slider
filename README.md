@@ -162,8 +162,8 @@ if necessary, add in package.json `type:'module'` and the extension .mjs for the
 
 ## Roadmap
 - Priority
+  - [ ] Make it environment dependant (dev/prod)
   - [x] component position is wrong : center from the left side of the component not its 'middle' 
-  - [ ] fix handle
   - [ ] color slider 
   - [ ] change layout colouring
   - [ ] add media size
