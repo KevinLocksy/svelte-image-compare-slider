@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import html from '@rollup/plugin-html';
 import resolve from '@rollup/plugin-node-resolve';
 import postcss from "rollup-plugin-postcss";
 import postcssImport from 'postcss-import';
@@ -34,25 +35,39 @@ function serve() {
   };
 }
 
-export default {
-  input: 'test/demo.js',   //Entry point for rollup aka file to bundle 
-  output: {
-    file: 'public/build/bundle.js', // The destination for our bundled JavaScript
-    format: 'iife', // Our bundle will be an Immediately-Invoked Function Expression
-    name: 'app', // The IIFE return value will be assigned into a variable called `app`
+export default [
+  {
+    input: 'test/demo.js',   //Entry point for rollup aka file to bundle 
+    output: {
+      file: 'public/build/bundle.js', // The destination for our bundled JavaScript
+      format: 'iife', // Our bundle will be an Immediately-Invoked Function Expression
+      name: 'app', // The IIFE return value will be assigned into a variable called `app`
+    },
+    plugins: [
+      svelte({
+        // Tell the svelte plugin where our svelte files are located
+        include: ['test/**/*.svelte','src/**/*.svelte'],
+      }),
+      html({
+        include: "test/**/*.html",
+      }),
+      image(),
+      resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
+      postcss({
+        plugins: [postcssImport()]
+    }), // Tell the browser to use this plugin for reading css
+      serve(),
+      livereload('public'),
+    ],
   },
-  plugins: [
-    svelte({
-      // Tell the svelte plugin where our svelte files are located
-      include: ['test/**/*.svelte','src/**/*.svelte'],
-    }),
-    resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
-    postcss({
-      plugins: [postcssImport()]
-  }), // Tell the browser to use this plugin for reading css
-    serve(),
-    livereload('public'),
-  ],
-};
+  {
+    input: 'test/index.html',   //Entry point for rollup aka file to bundle 
+    output: {
+      file: 'public/build/index.html', // The destination for our bundled JavaScript
+      format: 'iife', // Our bundle will be an Immediately-Invoked Function Expression
+      name: 'app', // The IIFE return value will be assigned into a variable called `app`
+    },
+  }
+];
 
 //https://typeofnan.dev/how-to-set-up-a-svelte-app-with-rollup/
