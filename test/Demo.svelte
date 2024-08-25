@@ -19,7 +19,7 @@
     <h1>Image Comparison Slider</h1>
   </header>
   <div id='standfirst'>
-    <p>All the photographies and sketches have been made by Kevin Locksy. Please do not download or copy his work without his permission.</p>
+    <p>©KevinLocksy. All rights reserved. Images, videos, writings, and all other creative content are protected and may not be used without expressed permission from the artist</p>
   </div>
   <main>
     <div id="demo-default" class='demo'>
@@ -36,7 +36,7 @@
     <p>
       Developed by Kevin Locksy.
     </p> 
-    <p>All the photographies and sketches have been taken or made by Kevin Locksy. Please do not download or copy his work without his permission.</p>
+    <p>©KevinLocksy. All rights reserved. Images, videos, writings, and all other creative content are protected and may not be used without expressed permission from the artist</p>
   </footer>
 </div>
 
@@ -46,9 +46,9 @@
   * Css var
   */
   #demo-image-compare-slider{
-    --background-color-header:rgb(57, 57, 57);
-    --background-color-footer:rgb(57, 57, 57);
-    --background-color-column-odd:rgb(100, 100, 100);
+    --background-color-header:#111212;
+    --background-color-footer:#111212;
+    --background-color-column-odd:#1f2229;
     --shadow-box-primary:#191b1f;
   }
   /**
@@ -80,11 +80,8 @@
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
-    padding: 0 1em;
     &>*{
       flex:1;
-      padding: 0 1.5em;
-
     }
     &>*:nth-child(odd){
       background-color: var(--background-color-column-odd);

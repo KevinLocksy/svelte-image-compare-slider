@@ -3,6 +3,11 @@
   --table-row-odd-background-color:#c1c1c1;
   --table-row-even-background-color:#dddddd;
 }
+body{
+  margin:0;
+  color: white;
+  background-color: #202226;
+}
 /**
 * Component position
 */
@@ -15,6 +20,7 @@
 */
 table{
   margin: 1em auto;
+  color:black;
 }
 td, th {
   width: clamp(0em,15vw,10em);
@@ -35,6 +41,7 @@ tr{
 * Snippet code
 */
 .snippet{
+  color:black;
   display:flex;
   justify-content: center;
   height: min-content;
