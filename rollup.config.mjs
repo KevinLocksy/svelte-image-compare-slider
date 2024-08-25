@@ -51,7 +51,6 @@ export default [
       html({
         include: "test/**/*.html",
       }),
-      image(),
       resolve({ browser: true }), // Tell any third-party plugins that we're building for the browser
       postcss({
         plugins: [postcssImport()]
