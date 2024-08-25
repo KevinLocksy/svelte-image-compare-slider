@@ -16,7 +16,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "homepage": "https://kevinlocksy.github.io/svelte-image-compare-slider/",
   "directories": {
     "test": "test"
   },
