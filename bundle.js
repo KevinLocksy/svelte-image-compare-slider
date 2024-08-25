@@ -1,5 +1,3 @@
-
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 var app = (function () {
 	'use strict';
 
@@ -1822,7 +1820,7 @@ var app = (function () {
 				pre = element("pre");
 				t15 = text("    ");
 				code = element("code");
-				t16 = text("\r\n<script>\r\n  import ImageCompareSlider \r\n    from '../src/ImageCompareSlider.svelte'\r\n  //border's props\r\n  let slideColor=\"white\", slideWidth=");
+				t16 = text("\r\n<script>\r\n  import ImageCompareSlider from '../src/ImageCompareSlider.svelte'\r\n  //border's props\r\n  let slideColor=\"white\", slideWidth=");
 				t17 = text(/*slideWidth*/ ctx[5]);
 				t18 = text(";\r\n  //overlay's props\r\n  let overlayOpacity=");
 				t19 = text(/*overlayOpacity*/ ctx[6]);
@@ -2099,7 +2097,7 @@ var app = (function () {
 		return child_ctx;
 	}
 
-	// (44:6) {#each tableContent as {id, element, feature, value}}
+	// (43:6) {#each tableContent as {id, element, feature, value}}
 	function create_each_block(ctx) {
 		let tr;
 		let td0;
@@ -2142,21 +2140,21 @@ var app = (function () {
 
 	function create_fragment$1(ctx) {
 		let div1;
-		let h30;
+		let h2;
 		let t1;
 		let div0;
 		let imagecompareslider;
 		let t2;
-		let p;
-		let t5;
-		let h31;
-		let t7;
+		let h30;
+		let t4;
 		let table;
 		let thead;
-		let t12;
+		let t9;
 		let tbody;
-		let t13;
-		let h32;
+		let t10;
+		let h31;
+		let t12;
+		let p;
 		let t15;
 		let pre;
 		let t16;
@@ -2193,31 +2191,31 @@ var app = (function () {
 		return {
 			c() {
 				div1 = element("div");
-				h30 = element("h3");
-				h30.textContent = "Single image";
+				h2 = element("h2");
+				h2.textContent = "Single image";
 				t1 = space();
 				div0 = element("div");
 				create_component(imagecompareslider.$$.fragment);
 				t2 = space();
-				p = element("p");
-				p.innerHTML = `With <code>frontSrc=&quot;&quot;;</code>`;
-				t5 = space();
-				h31 = element("h3");
-				h31.textContent = "Characterics";
-				t7 = space();
+				h30 = element("h3");
+				h30.textContent = "Characterics";
+				t4 = space();
 				table = element("table");
 				thead = element("thead");
 				thead.innerHTML = `<tr><th></th> <th>Feature</th> <th>Value</th></tr>`;
-				t12 = space();
+				t9 = space();
 				tbody = element("tbody");
 
 				for (let i = 0; i < each_blocks.length; i += 1) {
 					each_blocks[i].c();
 				}
 
-				t13 = space();
-				h32 = element("h3");
-				h32.textContent = "Snippet code";
+				t10 = space();
+				h31 = element("h3");
+				h31.textContent = "Snippet code";
+				t12 = space();
+				p = element("p");
+				p.innerHTML = `With <code>frontSrc=&quot;&quot;;</code>`;
 				t15 = space();
 				pre = element("pre");
 				t16 = text("    ");
@@ -2239,18 +2237,16 @@ var app = (function () {
 			},
 			m(target, anchor) {
 				insert(target, div1, anchor);
-				append(div1, h30);
+				append(div1, h2);
 				append(div1, t1);
 				append(div1, div0);
 				mount_component(imagecompareslider, div0, null);
 				append(div1, t2);
-				append(div1, p);
-				append(div1, t5);
-				append(div1, h31);
-				append(div1, t7);
+				append(div1, h30);
+				append(div1, t4);
 				append(div1, table);
 				append(table, thead);
-				append(table, t12);
+				append(table, t9);
 				append(table, tbody);
 
 				for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2259,8 +2255,10 @@ var app = (function () {
 					}
 				}
 
-				append(div1, t13);
-				append(div1, h32);
+				append(div1, t10);
+				append(div1, h31);
+				append(div1, t12);
+				append(div1, p);
 				append(div1, t15);
 				append(div1, pre);
 				append(pre, t16);
@@ -2406,7 +2404,7 @@ var app = (function () {
 		}
 	}
 
-	var css_248z = ".demo{\r\n  --table-header-background-color:#a6a6a6;\r\n  --table-row-odd-background-color:#c1c1c1;\r\n  --table-row-even-background-color:#dddddd;\r\n}\r\nbody{\r\n  margin:0;\r\n  color: white;\r\n  background-color: #202226;\r\n}\r\nh2,h3{\r\n  text-align: center;\r\n}\r\n/**\r\n* Component position\r\n*/\r\n.container{\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n/**\r\n* Table\r\n*/\r\ntable{\r\n  margin: 1em auto;\r\n  color:black;\r\n  width:min-content;\r\n}\r\ntd, th {\r\n  width: clamp(0em,15vw,10em);\r\n  padding: 0.5em 1em;\r\n  text-align: left;\r\n  border: 1px solid #dddddd;\r\n}\r\nth {\r\n  background-color: var(--table-header-background-color);\r\n}\r\ntr{\r\n  background-color: var(--table-row-odd-background-color);\r\n  &:nth-child(even) {\r\n    background-color: var(--table-row-even-background-color);\r\n  }\r\n}\r\n/**\r\n* Snippet code\r\n*/\r\n.snippet{\r\n  color:black;\r\n  display:flex;\r\n  justify-content: center;\r\n  height: min-content;\r\n  width: 100%;\r\n}\r\ncode{\r\n  width:clamp(20vw, 70%, 70vw);\r\n  background-color: lightgrey;\r\n  padding: 0 2em;\r\n  border: solid 1px grey;\r\n  white-space:pre-wrap;\r\n}\r\n#demo-image-compare-slider.svelte-1fkqcjo{--background-color-header:#111212;--background-color-footer:#111212;--background-color-column-odd:#1f2229;--shadow-box-primary:#191b1f}\r\nheader.svelte-1fkqcjo,footer.svelte-1fkqcjo{position:sticky;position:-webkit-sticky;align-content:center;text-align:center;padding:1em;box-shadow:0px 1px 5px var(--shadow-box-primary);z-index:9999}\r\nheader.svelte-1fkqcjo{top:0;background-color:var(--background-color-header);min-height:5vh}\r\n#standfirst.svelte-1fkqcjo{text-align:center;padding:1em}\r\nmain.svelte-1fkqcjo{min-height:calc(100vh - 2*var(--banner-min-height));display:flex;flex-wrap:wrap;justify-content:center;gap:1em;&>*{\r\n      margin: 1em 0;\r\n    };&>*:nth-child(odd){\r\n      background-color: var(--background-color-column-odd);\r\n    };background-color:var(--background-color-main)}\r\nfooter.svelte-1fkqcjo{bottom:0;background-color:var(--background-color-footer);min-height:5vh;max-height:10em;padding:0.25em 1em}";
+	var css_248z = ".demo{\r\n  --table-header-background-color:#a6a6a6;\r\n  --table-row-odd-background-color:#c1c1c1;\r\n  --table-row-even-background-color:#dddddd;\r\n}\r\nbody{\r\n  margin:0;\r\n  color: white;\r\n  background-color: #202226;\r\n}\r\nh2,h3{\r\n  text-align: center;\r\n}\r\n/**\r\n* Component position\r\n*/\r\n.container{\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n/**\r\n* Table\r\n*/\r\ntable{\r\n  margin: 1em auto;\r\n  color:black;\r\n  min-width:25vw;\r\n  width:min-content;\r\n}\r\ntd, th {\r\n  width: clamp(0em,15vw,10em);\r\n  padding: 0.5em 1em;\r\n  text-align: left;\r\n  border: 1px solid #dddddd;\r\n}\r\nth {\r\n  background-color: var(--table-header-background-color);\r\n}\r\ntr{\r\n  background-color: var(--table-row-odd-background-color);\r\n  &:nth-child(even) {\r\n    background-color: var(--table-row-even-background-color);\r\n  }\r\n}\r\n/**\r\n* Snippet code\r\n*/\r\n.snippet{\r\n  display:flex;\r\n  justify-content: center;\r\n  height: min-content;\r\n  width: 100%;\r\n}\r\ncode{\r\n  color:black;\r\n  width:clamp(20vw, 70%, 70vw);\r\n  background-color: lightgrey;\r\n  padding: 0 2em;\r\n  border: solid 1px grey;\r\n  white-space:pre-wrap;\r\n}\r\n#demo-image-compare-slider.svelte-1fkqcjo{--background-color-header:#111212;--background-color-footer:#111212;--background-color-column-odd:#1f2229;--shadow-box-primary:#191b1f}\r\nheader.svelte-1fkqcjo,footer.svelte-1fkqcjo{position:sticky;position:-webkit-sticky;align-content:center;text-align:center;padding:1em;box-shadow:0px 1px 5px var(--shadow-box-primary);z-index:9999}\r\nheader.svelte-1fkqcjo{top:0;background-color:var(--background-color-header);min-height:5vh}\r\n#standfirst.svelte-1fkqcjo{text-align:center;padding:1em}\r\nmain.svelte-1fkqcjo{min-height:calc(100vh - 2*var(--banner-min-height));display:flex;flex-wrap:wrap;justify-content:center;gap:1em;&>*{\r\n      margin: 1em 0;\r\n    };&>*:nth-child(odd){\r\n      background-color: var(--background-color-column-odd);\r\n    };background-color:var(--background-color-main)}\r\nfooter.svelte-1fkqcjo{bottom:0;background-color:var(--background-color-footer);min-height:5vh;max-height:10em;padding:0.25em 1em}";
 	styleInject(css_248z);
 
 	/* test\Demo.svelte generated by Svelte v4.2.8 */
