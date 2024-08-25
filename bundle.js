@@ -1826,11 +1826,11 @@ var app = (function () {
 				t17 = text(/*slideWidth*/ ctx[5]);
 				t18 = text(";\r\n  //overlay's props\r\n  let overlayOpacity=");
 				t19 = text(/*overlayOpacity*/ ctx[6]);
-				t20 = text(";\r\n  //handle's props\r\n  let handleColor=\"white\",handleSize=");
+				t20 = text(";\r\n  //handle's props\r\n  let handleColor=\"white\";\r\n  let handleSize=");
 				t21 = text(/*handleSize*/ ctx[7]);
-				t22 = text(",handleGirth=");
+				t22 = text(";\r\n  let handleGirth=");
 				t23 = text(/*handleGirth*/ ctx[8]);
-				t24 = text(",handleOpacity=");
+				t24 = text(";\r\n  let handleOpacity=");
 				t25 = text(/*handleOpacity*/ ctx[9]);
 				t26 = text(";\r\n</script>\r\n<div>\r\n  <ImageCompareSlider  \r\n    height=\"");
 				t27 = text(/*height*/ ctx[0]);
@@ -2406,7 +2406,7 @@ var app = (function () {
 		}
 	}
 
-	var css_248z = ".demo{\r\n  --table-header-background-color:#a6a6a6;\r\n  --table-row-odd-background-color:#c1c1c1;\r\n  --table-row-even-background-color:#dddddd;\r\n}\r\nbody{\r\n  margin:0;\r\n  color: white;\r\n  background-color: #202226;\r\n}\r\n/**\r\n* Component position\r\n*/\r\n.container{\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n/**\r\n* Table\r\n*/\r\ntable{\r\n  margin: 1em auto;\r\n  color:black;\r\n}\r\ntd, th {\r\n  width: clamp(0em,15vw,10em);\r\n  padding: 0.5em 1em;\r\n  text-align: left;\r\n  border: 1px solid #dddddd;\r\n}\r\nth {\r\n  background-color: var(--table-header-background-color);\r\n}\r\ntr{\r\n  background-color: var(--table-row-odd-background-color);\r\n  &:nth-child(even) {\r\n    background-color: var(--table-row-even-background-color);\r\n  }\r\n}\r\n/**\r\n* Snippet code\r\n*/\r\n.snippet{\r\n  color:black;\r\n  display:flex;\r\n  justify-content: center;\r\n  height: min-content;\r\n  width: 100%;\r\n}\r\ncode{\r\n  background-color: lightgrey;\r\n  padding: 0 2em;\r\n  border: solid 1px grey;\r\n  white-space:pre-wrap;\r\n}\r\n#demo-image-compare-slider.svelte-vztasr{--background-color-header:#111212;--background-color-footer:#111212;--background-color-column-odd:#1f2229;--shadow-box-primary:#191b1f}\r\nheader.svelte-vztasr,footer.svelte-vztasr{position:sticky;position:-webkit-sticky;align-content:center;text-align:center;padding:1em;box-shadow:0px 1px 5px var(--shadow-box-primary);z-index:9999}\r\nheader.svelte-vztasr{top:0;background-color:var(--background-color-header);min-height:5vh}\r\n#standfirst.svelte-vztasr{text-align:center;padding:1em}\r\nmain.svelte-vztasr{min-height:calc(100vh - 2*var(--banner-min-height));display:flex;flex-wrap:wrap;justify-content:center;&>*{\r\n      flex:1;\r\n    };&>*:nth-child(odd){\r\n      background-color: var(--background-color-column-odd);\r\n    };background-color:var(--background-color-main)}\r\nfooter.svelte-vztasr{bottom:0;background-color:var(--background-color-footer);min-height:5vh;max-height:10em;padding:0.25em 1em}";
+	var css_248z = ".demo{\r\n  --table-header-background-color:#a6a6a6;\r\n  --table-row-odd-background-color:#c1c1c1;\r\n  --table-row-even-background-color:#dddddd;\r\n}\r\nbody{\r\n  margin:0;\r\n  color: white;\r\n  background-color: #202226;\r\n}\r\nh2,h3{\r\n  text-align: center;\r\n}\r\n/**\r\n* Component position\r\n*/\r\n.container{\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n/**\r\n* Table\r\n*/\r\ntable{\r\n  margin: 1em auto;\r\n  color:black;\r\n}\r\ntd, th {\r\n  width: clamp(0em,15vw,10em);\r\n  padding: 0.5em 1em;\r\n  text-align: left;\r\n  border: 1px solid #dddddd;\r\n}\r\nth {\r\n  background-color: var(--table-header-background-color);\r\n}\r\ntr{\r\n  background-color: var(--table-row-odd-background-color);\r\n  &:nth-child(even) {\r\n    background-color: var(--table-row-even-background-color);\r\n  }\r\n}\r\n/**\r\n* Snippet code\r\n*/\r\n.snippet{\r\n  color:black;\r\n  display:flex;\r\n  justify-content: center;\r\n  height: min-content;\r\n  width: 100%;\r\n}\r\ncode{\r\n  background-color: lightgrey;\r\n  padding: 0 2em;\r\n  border: solid 1px grey;\r\n  white-space:pre-wrap;\r\n}\r\n#demo-image-compare-slider.svelte-vztasr{--background-color-header:#111212;--background-color-footer:#111212;--background-color-column-odd:#1f2229;--shadow-box-primary:#191b1f}\r\nheader.svelte-vztasr,footer.svelte-vztasr{position:sticky;position:-webkit-sticky;align-content:center;text-align:center;padding:1em;box-shadow:0px 1px 5px var(--shadow-box-primary);z-index:9999}\r\nheader.svelte-vztasr{top:0;background-color:var(--background-color-header);min-height:5vh}\r\n#standfirst.svelte-vztasr{text-align:center;padding:1em}\r\nmain.svelte-vztasr{min-height:calc(100vh - 2*var(--banner-min-height));display:flex;flex-wrap:wrap;justify-content:center;&>*{\r\n      flex:1;\r\n    };&>*:nth-child(odd){\r\n      background-color: var(--background-color-column-odd);\r\n    };background-color:var(--background-color-main)}\r\nfooter.svelte-vztasr{bottom:0;background-color:var(--background-color-footer);min-height:5vh;max-height:10em;padding:0.25em 1em}";
 	styleInject(css_248z);
 
 	/* test\Demo.svelte generated by Svelte v4.2.8 */
@@ -2457,7 +2457,7 @@ var app = (function () {
 				create_component(singleimg.$$.fragment);
 				t7 = space();
 				footer = element("footer");
-				footer.innerHTML = `<p>Developed by Kevin Locksy.</p> <p>©KevinLocksy. All rights reserved. Images, videos, writings, and all other creative content are protected and may not be used without expressed permission from the artist</p>`;
+				footer.innerHTML = `<p>Developed by Kevin Locksy</p> <p>©KevinLocksy. All rights reserved. Images, videos, writings, and all other creative content are protected and may not be used without expressed permission from the artist</p>`;
 				document.title = "Demonstration Svelte Component Image Compare Slider";
 				attr(link, "rel", "icon");
 				attr(link, "href", "favicon-rounded.logo.png");
