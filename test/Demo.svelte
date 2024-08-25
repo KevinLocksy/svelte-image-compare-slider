@@ -34,7 +34,7 @@
   </main>
   <footer>
     <p>
-      Developed by Kevin Locksy.
+      Developed by Kevin Locksy
     </p> 
     <p>©KevinLocksy. All rights reserved. Images, videos, writings, and all other creative content are protected and may not be used without expressed permission from the artist</p>
   </footer>

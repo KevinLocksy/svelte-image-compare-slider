@@ -8,6 +8,9 @@ body{
   color: white;
   background-color: #202226;
 }
+h2,h3{
+  text-align: center;
+}
 /**
 * Component position
 */

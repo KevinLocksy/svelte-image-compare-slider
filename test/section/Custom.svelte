@@ -90,7 +90,10 @@
   //overlay's props
   let overlayOpacity={overlayOpacity};
   //handle's props
-  let handleColor="white",handleSize={handleSize},handleGirth={handleGirth},handleOpacity={handleOpacity};
+  let handleColor="white";
+  let handleSize={handleSize};
+  let handleGirth={handleGirth};
+  let handleOpacity={handleOpacity};
 &lt;/script&gt;
 &lt;div&gt;
   &lt;ImageCompareSlider  
